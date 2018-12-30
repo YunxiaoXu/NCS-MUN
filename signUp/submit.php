@@ -37,7 +37,8 @@ $job = $_POST["job"];
 $chief1 = htmlspecialchars($_POST["chief1"], ENT_QUOTES);
 $chief2 = htmlspecialchars($_POST["chief2"], ENT_QUOTES);
 $vol1 = htmlspecialchars($_POST["vol1"], ENT_QUOTES);
-var_dump($vol1);
+//var_dump($vol1);
+
 require "../sql/sql.php";
 
 $select = "SELECT id FROM delegate WHERE cname='$cname' and email='$email'";
@@ -59,7 +60,7 @@ if ($conn->query($insert) === true) {
 
     $insert2 = "INSERT INTO question (id, chief1, chief2, vol)
      VALUES ($id, '$chief1', '$chief2', '$vol1')";
-    echo $insert2;
+    //echo $insert2;
     
     if ($conn->query($insert2)===true) {
         echo "<p>You have successfully signed up!</p>";
