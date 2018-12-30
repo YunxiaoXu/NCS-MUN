@@ -34,29 +34,29 @@
         }
     </script>
     <style>
-		.header {
-			position: absolute;
-			width: 100%;
+        .header {
+            position: absolute;
+            width: 100%;
             height: 22px;
             background-color: rgba(200,200,200,.5);
         }
-		html, body {
+        html, body {
             margin: 0px;
             height: 100%;
         }
-		.wrapper {
-			/*position: absolute;*/
-			height: 100%;
+        .wrapper {
+            /*position: absolute;*/
+            height: 100%;
             /*top: 1.4rem;
-			bottom: 1.4rem;*/
+            bottom: 1.4rem;*/
             padding: 0 8%;
             margin: 0 10% -23px 10%;
             background-color:ivory;
             overflow: hidden;
-		}
+        }
         h1, h2 {
             margin-top: 64px;
-		}
+        }
         ul {
             list-style: none;
             padding-left: 16px;
@@ -99,7 +99,7 @@
         .error {
             color: red;
         }
-		.footer {
+        .footer {
             height: 22px;
             text-align: center;
             width: 100%;
@@ -234,11 +234,11 @@
                 <button type="button" onclick="hide('info');show('questions')">Back</button>
                 <button type="button" onclick="hide('info');show('submit');showError();">Next</button>
             </div>
-			<div class="submit hidden">
+            <div class="submit hidden">
                 <h2>Review:</h2>
-				<div class="error"></div>
+                <div class="error"></div>
                 <br/>
-				<button type="button" onclick="hide('submit');show('info')">Back</button>
+                <button type="button" onclick="hide('submit');show('info')">Back</button>
                 <hr/>
                 <input type="submit" value="submit" style="padding:4px 16px;">
             </div>
