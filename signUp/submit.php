@@ -49,11 +49,12 @@ if ($repeatingCheck->fetch_assoc()) {
 }
 
 $insert = "INSERT INTO delegate (cname, ename, grade, email,
- wechat, team, job, chief1, chief2, vol, submission_date)
- VALUES ('$cname', '$ename', $grade, '$email', '$wechat',
- '$team', '$job', '<a href=\'question.php?email=$email&q=chief1\'>chief1</a>',
- '<a href=\'question.php?email=$email&q=chief2\'>chief2</a>',
- '<a href=\'question.php?email=$email&q=vol\'>vol</a>', now())";
+ wechat, team, job, chief1, chief2, vol, submission_date) VALUES
+ ('$cname', '$ename', $grade, '$email', '$wechat','$team', '$job', '".
+ ($job=="chief"?"<a href=\'question.php?email=$email&q=chief1\'>chief1</a>":" - ")."', '".
+ ($job=="chief"?"<a href=\'question.php?email=$email&q=chief2\'>chief2</a>":" - ")."', '".
+ ($job=="vol"?"<a href=\'question.php?email=$email&q=vol\'>vol</a>":" - ")."', ".
+ "now())";
 
 if ($conn->query($insert) === true) {
     $id = $conn->query($select)->fetch_assoc()["id"];
