@@ -65,7 +65,11 @@ if ($conn->query($insert) === true) {
     
     if ($conn->query($insert2)===true) {
         echo "<p>You have successfully signed up!</p>";
+    } else {
+        echo "<p>Sign up Failed. Please check the questions.</p>";
     }
+} else {
+        echo "<p>Sign up Failed. Please check the information.</p>";
 }
 ?>
     </body>
