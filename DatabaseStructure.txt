@@ -1,0 +1,40 @@
+mun.delegate
++-----------------+------------------+-----------------+------+-----+----------------+
+| Field           | Type             | Collation       | Null | Key | Extra          |
++-----------------+------------------+-----------------+------+-----+----------------+
+| id              | int(10) unsigned | NULL            | NO   | PRI | auto_increment |
+| cname           | varchar(40)      | utf8_general_ci | NO   |     |                |
+| ename           | varchar(40)      | utf8_general_ci | NO   |     |                |
+| grade           | int(10) unsigned | NULL            | NO   |     |                |
+| email           | varchar(100)     | utf8_general_ci | NO   |     |                |
+| wechat          | varchar(100)     | utf8_general_ci | NO   |     |                |
+| team            | varchar(40)      | utf8_general_ci | NO   |     |                |
+| job             | varchar(40)      | utf8_general_ci | NO   |     |                |
+| chief1          | varchar(100)     | utf8_general_ci | YES  |     |                |
+| chief2          | varchar(100)     | utf8_general_ci | YES  |     |                |
+| vol             | varchar(100)     | utf8_general_ci | YES  |     |                |
+| submission_date | date             | NULL            | NO   |     |                |
++-----------------+------------------+-----------------+------+-----+----------------+
+
+mun.user
++-----------------------+------------------+-----------------+------+-----+----------------+
+| Field                 | Type             | Collation       | Null | Key | Extra          |
++-----------------------+------------------+-----------------+------+-----+----------------+
+| id                    | int(10) unsigned | NULL            | NO   | PRI | auto_increment |
+| name                  | varchar(100)     | utf8_general_ci | NO   |     |                |
+| password              | varchar(100)     | utf8_general_ci | NO   |     |                |
+| role                  | varchar(20)      | utf8_general_ci | NO   |     |                |
+| email                 | varchar(40)      | utf8_general_ci | NO   |     |                |
+| submission_date       | date             | NULL            | YES  |     |                |
+| authentication_string | varchar(100)     | utf8_general_ci | YES  |     |                |
++-----------------------+------------------+-----------------+------+-----+----------------+
+
+mun.question
++--------+------------------+-----------------+------+-----+-------+
+| Field  | Type             | Collation       | Null | Key | Extra |
++--------+------------------+-----------------+------+-----+-------+
+| id     | int(10) unsigned | NULL            | NO   | PRI |       |
+| chief1 | varchar(1200)    | utf8_general_ci | YES  |     |       |
+| chief2 | varchar(1200)    | utf8_general_ci | YES  |     |       |
+| vol    | varchar(1200)    | utf8_general_ci | YES  |     |       |
++--------+------------------+-----------------+------+-----+-------+ 

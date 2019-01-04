@@ -123,6 +123,9 @@
             width: 100%;
             background-color: antiquewhite;
         }
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -264,7 +267,7 @@
             </form>
         </div>
         <div class="footer">
-            &copy;NCS MUN 2018-<?php echo date("Y")?> <a href="mailto:mun@ncs.com">mun@ncs.com</a>
+            &copy; 2018-<?php echo date("Y")?>&nbsp; NorthCross MUN Conference&nbsp; <a href="mailto:NCMUNC@163.com">NCMUNC@163.com</a>
         </div>
     </div>
 </body>
