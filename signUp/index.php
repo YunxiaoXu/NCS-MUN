@@ -55,12 +55,13 @@
             width: 100%;
             height: 22px;
             background-color: rgba(200,200,200,.5);
+            z-index: 1000;
         }
         .content {
-            position: fixed;
-            top: 22px;
-            bottom: 22px;
-            /* height: 100%; */
+            position: relative;
+            /* top: 22px; */
+            /* bottom: 22px; */
+            min-height: 100%;
             width: 64%;
             padding: 0 8%;
             margin: 0 10% 0px 10%;
@@ -102,7 +103,7 @@
             border: solid 1px gray;
         }
         button {
-            margin-bottom: 8px;
+            margin-bottom: 30px;
         }
         .hidden {
             display: none;
@@ -151,14 +152,14 @@
             <span text-align="right"> login </span>
         </div>
         <div class="content">
-            <div class="welcome">
-                <h1>NCS MUN Sign Up</h1>
-                <p>Welcome to NCS MUN!</p>
-                <p>Some Introduction.</p>
-                <br/>
-                <button type="button" onclick="hide('welcome');show('team')">Next</button>
-            </div>
             <form action="submit.php" method="POST">
+                <div class="welcome">
+                    <h1>NCS MUN Sign Up</h1>
+                    <p>Welcome to NCS MUN!</p>
+                    <p>Some Introduction.</p>
+                    <br/>
+                    <button type="button" onclick="hide('welcome');show('team')">Next</button>
+                </div>
                 <div class="team hidden">
                     <h2>Team:</h2>
                     <ul class="team-selector">
