@@ -1,7 +1,5 @@
 <?php
 session_start();
-echo "user:".$_SESSION['username'];
-echo " | <a href='/login.php?logout=true'>logout</a>";
 if (!isset($_SESSION["userid"]) || $_SESSION['userrole']!=="admin") {
     header("Content-type:text/html;charset=uft-8");
     header("location:/login.php?from=".rawurlencode($_SERVER['REQUEST_URI']));
@@ -13,11 +11,28 @@ if (!isset($_SESSION["userid"]) || $_SESSION['userrole']!=="admin") {
 <head>
     <title>check page</title>
     <style>
+        .option { float:left;}
+        .user { float: right; }
         table { border-collapse: collapse;}
         td { border: solid 1px black; padding: 5px 10px}
     </style>
 </head>
 <body>
+
+<?php
+echo "<span class='option'>";
+echo "<a href='download.php?db=delegate";
+echo isset($_GET["filter"])?"&filter=".$_GET["filter"]:"";
+echo "'>Download</a>";
+echo "</span>";
+
+echo "<span class='user'>";
+echo "user:".$_SESSION['username'];
+echo " | <a href='/login.php?logout=true'>logout</a>";
+echo "</span>";
+?>
+
+    <br/>
     <h1>all delegate requests</h1>
     <form method="GET" action="check.php">
         <input type="text" id="filter" name="filter"/>
