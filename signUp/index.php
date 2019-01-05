@@ -38,13 +38,6 @@
         }
     </script>
     <style>
-        .header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 22px;
-            background-color: rgba(200,200,200,.5);
-        }
         html, body {
             margin: 0px;
             height: 100%;
@@ -55,6 +48,13 @@
             width: 100%;
             /*top: 1.4rem;
             bottom: 1.4rem;*/
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 22px;
+            background-color: rgba(200,200,200,.5);
         }
         .content {
             position: fixed;
@@ -123,9 +123,22 @@
             position: fixed;
             bottom: 0;
             height: 22px;
+            line-height: 22px;
             text-align: center;
+            vertical-align: bottom;
             width: 100%;
             background-color: antiquewhite;
+        }
+        .narrow {
+            display: none;
+        }
+        @media only screen and (max-width:500px) {
+            .wide {
+                display: none;
+            }
+            .narrow {
+                display: initial;
+            }
         }
         a {
             text-decoration: none;
@@ -271,7 +284,9 @@
             </form>
         </div>
         <div class="footer">
-            &copy; 2018-<?php echo date("Y")?>&nbsp; NorthCross MUN Conference&nbsp; <a href="mailto:NCMUNC@163.com">NCMUNC@163.com</a>
+            &copy; 2018-<?php echo date("Y")?>&nbsp;
+            <span class="narrow">NCMUNC</span><span class="wide">NorthCross MUN Conference</span>&nbsp;
+            <a href="mailto:NCMUNC@163.com">NCMUNC@163.com</a>
         </div>
     </div>
 </body>
