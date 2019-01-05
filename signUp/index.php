@@ -3,6 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>MUN Sign Up</title>
+    <meta name="keywords" content="NorthCross, MUN, Model UN, NCMUNC">
+    <meta name="discription" content="NorthCross Mun Conference Sign Up">
+    <meta name="render" content="webkit">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script>
         var inputs = {cname:"Chinese Name", ename:"English Name", grade:"School Year", email:"E-mail",
