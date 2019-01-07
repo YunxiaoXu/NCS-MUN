@@ -317,7 +317,7 @@ if (!isset($_SESSION["userid"])) {
         <div class="footer">
             &copy; 2018-<?php echo date("Y")?>&nbsp;
             <span class="narrow">NCMUNC</span><span class="wide">NorthCross MUN Conference</span>&nbsp;
-            <a href="mailto:NCMUNC@163.com">NCMUNC@163.com</a>
+            <a href="mailto:contact@ncmunc.org">contact@ncmunc.org</a>
         </div>
     </div>
 </body>
