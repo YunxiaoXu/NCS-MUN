@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,12 +56,19 @@
             bottom: 1.4rem;*/
         }
         .header {
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
-            height: 22px;
+            height: 30px;
             background-color: rgba(200,200,200,.5);
             z-index: 1000;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: right;
+            align-items: center;
+        }
+        .login {
+            padding-right: 16px;
         }
         .content {
             position: relative;
@@ -125,8 +136,8 @@
         .footer {
             position: fixed;
             bottom: 0;
-            height: 22px;
-            line-height: 22px;
+            /* height: 22px; */
+            line-height: 40px;
             text-align: center;
             vertical-align: bottom;
             width: 100%;
@@ -136,6 +147,12 @@
             display: none;
         }
         @media only screen and (max-width:500px) {
+            .header {
+                height: 22px;
+            }
+            .footer {
+                line-height: 22px;
+            }
             .wide {
                 display: none;
             }
@@ -151,7 +168,17 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <span text-align="right"> login </span>
+            <span class="login"> 
+
+<?php
+if (!isset($_SESSION["userid"])) {
+    echo "<a href='/login.php?from=/signUp/'>login</a";
+} else {
+    echo $_SESSION["username"]." | <a href='/login.php?logout=true'>logout</a>";
+}
+?>
+
+            </span>
         </div>
         <div class="content">
             <form action="submit.php" method="POST">
@@ -285,6 +312,7 @@
                     <input type="submit" value="submit" style="padding:5px 16px;margin-top:5px;"/>
                 </div>
             </form>
+            <br/>
         </div>
         <div class="footer">
             &copy; 2018-<?php echo date("Y")?>&nbsp;
