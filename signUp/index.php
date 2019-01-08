@@ -181,7 +181,7 @@ if (!isset($_SESSION["userid"])) {
             </span>
         </div>
         <div class="content">
-            <form action="submit.php" method="POST">
+            <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
                 <div class="welcome">
                     <h1>NCS MUN Sign Up</h1>
                     <p>Welcome to NCS MUN!</p>
