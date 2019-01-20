@@ -100,7 +100,7 @@ session_start();
             margin-top: 80px;
         }
         h2 {
-            margin-top: 48px;
+            margin-top: 60px;
         }
         ul {
             list-style: none;
