@@ -25,6 +25,15 @@ session_start();
         function hide(c) {
             $("."+c).classList.add("hidden");
         }
+        function enableChief() {
+            $('#chief').disabled=false;
+            $('#chief+label').onclick = "show('vol-question');hide('chief-question');";
+        }
+        function disableChief() {
+            $('#chief').disabled=true;
+            $('#vol+label').click();
+            $('#chief+label').onclick = "";
+        }
         function showError() {
             var errorText = document.querySelector("div.error");
             errorText.innerHTML="";
@@ -126,6 +135,11 @@ session_start();
         input[type=radio]:checked+label {
             background-image: linear-gradient(to bottom, rgba(66, 133,244,.08), rgba(66, 133,244,.32));
         }
+        input[type=radio]:disabled+label {
+            cursor: not-allowed;
+            color: gray;
+            background-image: linear-gradient(to bottom, rgba(128, 128,128,.2), rgba(128, 128,128,.2));
+        }
         input {
             width: 100%; /* 128px;*/
             border: solid 1px gray;
@@ -210,23 +224,25 @@ if (!isset($_SESSION["userid"])) {
                     <ul class="team-selector">
                         <li>
                             <input type="radio" name="team" value="staff" id="staff" style="display:none;" checked="checked"/>
-                            <label for="staff" class="nowrap">Member of Staff</label>
+                            <label for="staff" class="nowrap" onclick="enableChief();">Member of Staff</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="operation" id="operation" style="display:none;"/>
-                            <label for="operation" class="nowrap">Member of Operation</label>
+                            <label for="operation" class="nowrap" onclick="enableChief();">Member of Operation</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="media" id="media" style="display:none;"/>
-                            <label for="media" class="nowrap">Member of Media</label>
+                            <label for="media" class="nowrap" onclick="enableChief();">Member of Media</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="communication" id="communication" style="display:none;"/>
-                            <label for="communication" class="nowrap">Member of Communication</label>
+                            <label for="communication" class="nowrap" onclick="enableChief();">Member of Communication</label>
                         </li>
+                    </ul>
+                    <ul class="team-selector">
                         <li>
                             <input type="radio" name="team" value="general" id="general" style="display:none;"/>
-                            <label for="general" class="nowrap">General Conference Volunteer</label>
+                            <label for="general" class="nowrap" onclick="disableChief();">General Conference Volunteer</label>
                         </li>
                     </ul>
                     <br/>
