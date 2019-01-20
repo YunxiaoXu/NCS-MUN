@@ -64,7 +64,7 @@ session_start();
             z-index: 1000;
             display: flex;
             display: -webkit-flex;
-            justify-content: right;
+            justify-content: flex-end;
             align-items: center;
         }
         .login {
