@@ -254,14 +254,14 @@ if (!isset($_SESSION["userid"])) {
                     <div class="chief-question">
                         <p style="color:red">Up to 150 words for the question.</p>
                         <span>Why are you qualified for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="chief1" wrap="hard"></textarea><br/>              
+                        <textarea rows="8" cols="64" name="chief1" wrap="hard" maxlength="1200"></textarea><br/>              
                         <!-- <span>What characteristic do you have for this position?</span><br/>
                         <textarea rows="8" cols="64" name="chief2" wrap="hard"></textarea>      -->
                     </div>
                     <div class="vol-question hidden">
                         <p style="color:red">Up to 150 words for the question.</p>
                         <span>Why are you applying for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="vol1" wrap="hard"></textarea>           
+                        <textarea rows="8" cols="64" name="vol1" wrap="hard" maxlength="1200"></textarea>           
                         <br/> 
                     </div>
                     <br/>

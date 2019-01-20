@@ -1,7 +1,5 @@
 <?php
 session_start();
-echo "user:".$_SESSION['username'];
-echo " | <a href='/login.php?logout=true'>logout</a>";
 if (!isset($_SESSION["userid"]) || $_SESSION['userrole']!=="admin") {
     header("Content-type:text/html;charset=uft-8");
     header("location:/login.php?from=".rawurlencode($_SERVER['REQUEST_URI']));
@@ -24,11 +22,18 @@ $row = $conn->query($select)->fetch_assoc();
     <title>Question Viewer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .user { float: right;}
         table { border-collapse: collapse; margin:10px 16%;}
-        td { border: solid 1px black; padding: 5px 6px}
+        td { border: solid 1px black; padding: 5px 6px;}
     </style>
 </head>
 <body>
+    <span class="user">
+        user: <?php echo $_SESSION['username'];?> |
+        <a href='/login.php?logout=true'>logout</a>
+    </span>
+    <br/>
+    <br/>
     <table>
     <tbody>
 
