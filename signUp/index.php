@@ -72,7 +72,8 @@ session_start();
         }
         .bg {
             position: fixed;
-            height: 100%;
+            top: 20px;
+            height: 90%;
             width: 100%;
             background-image: url(/assets/pic/ncmunc.png);
             background-repeat: no-repeat;
@@ -80,7 +81,7 @@ session_start();
             background-size:contain;
             filter: blur(2px);
             -webkit-filter: blur(2px);
-            opacity: 0.8;
+            opacity: 0.6;
             z-index: -1;
         }
         .content {
