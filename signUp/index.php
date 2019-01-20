@@ -70,6 +70,19 @@ session_start();
         .login {
             padding-right: 16px;
         }
+        .bg {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background-image: url(/assets/pic/ncmunc.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:contain;
+            filter: blur(2px);
+            -webkit-filter: blur(2px);
+            opacity: 0.8;
+            z-index: -1;
+        }
         .content {
             position: relative;
             /* top: 22px; */
@@ -78,7 +91,7 @@ session_start();
             width: 64%;
             padding: 0 8%;
             margin: 0 10% 0px 10%;
-            background-color:ivory;
+            background-color: rgba(33,29,243,.03);
             /* overflow-x: hidden; */
             overflow-y: auto;
         }
@@ -103,6 +116,7 @@ session_start();
             border-radius: 3pt;
             color: #1a73e8;
             background-image: linear-gradient(to bottom, rgba(200,200,200,0.12), rgba(200,200,200,0.12));
+            background-color: white;
             cursor: pointer;
         }
         .nowrap {
@@ -180,6 +194,7 @@ if (!isset($_SESSION["userid"])) {
 
             </span>
         </div>
+        <div class="bg"></div>
         <div class="content">
             <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
                 <div class="welcome">
