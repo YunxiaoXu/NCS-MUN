@@ -35,7 +35,7 @@ $wechat = htmlspecialchars($_POST["wechat"]);
 $team = $_POST["team"];
 $job = $_POST["job"];
 $chief1 = htmlspecialchars($_POST["chief1"], ENT_QUOTES);
-$chief2 = htmlspecialchars($_POST["chief2"], ENT_QUOTES);
+// $chief2 = htmlspecialchars($_POST["chief2"], ENT_QUOTES);
 $vol1 = htmlspecialchars($_POST["vol1"], ENT_QUOTES);
 //var_dump($vol1);
 
@@ -49,18 +49,17 @@ if ($repeatingCheck->fetch_assoc()) {
 }
 
 $insert = "INSERT INTO delegate (cname, ename, grade, email,
- wechat, team, job, chief1, chief2, vol, submission_date) VALUES
+ wechat, team, job, chief1, vol, submission_date) VALUES
  ('$cname', '$ename', $grade, '$email', '$wechat','$team', '$job', '".
  ($job=="chief"?"<a href=\'question.php?email=$email&q=chief1\'>chief1</a>":" - ")."', '".
- ($job=="chief"?"<a href=\'question.php?email=$email&q=chief2\'>chief2</a>":" - ")."', '".
  ($job=="vol"?"<a href=\'question.php?email=$email&q=vol\'>vol</a>":" - ")."', ".
  "now())";
 
 if ($conn->query($insert) === true) {
     $id = $conn->query($select)->fetch_assoc()["id"];
 
-    $insert2 = "INSERT INTO question (id, chief1, chief2, vol)
-     VALUES ($id, '$chief1', '$chief2', '$vol1')";
+    $insert2 = "INSERT INTO question (id, chief1, vol)
+     VALUES ($id, '$chief1', '$vol1')";
     //echo $insert2;
     
     if ($conn->query($insert2)===true) {
