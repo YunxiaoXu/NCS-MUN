@@ -223,6 +223,10 @@ if (!isset($_SESSION["userid"])) {
                             <input type="radio" name="team" value="communication" id="communication" style="display:none;"/>
                             <label for="communication" class="nowrap">Member of Communication</label>
                         </li>
+                        <li>
+                            <input type="radio" name="team" value="general" id="general" style="display:none;"/>
+                            <label for="general" class="nowrap">General Conference Volunteer</label>
+                        </li>
                     </ul>
                     <br/>
                     <button type="button" onclick="hide('team');show('welcome')">Back</button>
