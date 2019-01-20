@@ -88,8 +88,8 @@ session_start();
             background-repeat: no-repeat;
             background-position: center;
             background-size:contain;
-            filter: blur(2px);
-            -webkit-filter: blur(2px);
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
             opacity: 0.6;
             z-index: -1;
         }
