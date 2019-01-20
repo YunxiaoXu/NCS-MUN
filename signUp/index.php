@@ -35,7 +35,7 @@ session_start();
             });
             document.querySelectorAll("textarea").forEach(q=>{
                 if(q.textLength>1200) {
-                    errorText.innerHTML += "* Error in " + inputs[q.name] + "! Too many characters!<br/>";
+                    errorText.innerHTML += "* Error in " + inputs[q.name] + "! Too many words!<br/>";
                 }
             });
             if (errorText.innerHTML=="") {
@@ -247,14 +247,14 @@ if (!isset($_SESSION["userid"])) {
                 <div class="questions hidden">
                     <h2>Personal Introduction:</h2>
                     <div class="chief-question">
-                        <p style="color:red">Up to 1200 characters for each question (including spaces).</p>
+                        <p style="color:red">Up to 150 words for the question.</p>
                         <span>Why are you qualified for this position?</span><br/>
                         <textarea rows="8" cols="64" name="chief1" wrap="hard"></textarea><br/>              
-                        <span>What characteristic do you have for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="chief2" wrap="hard"></textarea>     
+                        <!-- <span>What characteristic do you have for this position?</span><br/>
+                        <textarea rows="8" cols="64" name="chief2" wrap="hard"></textarea>      -->
                     </div>
                     <div class="vol-question hidden">
-                        <p style="color:red">Up to 1200 characters for the question (including spaces).</p>
+                        <p style="color:red">Up to 150 words for the question.</p>
                         <span>Why are you applying for this position?</span><br/>
                         <textarea rows="8" cols="64" name="vol1" wrap="hard"></textarea>           
                         <br/> 
