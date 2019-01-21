@@ -27,7 +27,7 @@ session_start();
         }
         function enableChief() {
             $('#chief').disabled=false;
-            $('#chief+label').onclick = "show('vol-question');hide('chief-question');";
+            $('#chief+label').onclick = "show('chief-question');hide('vol-question');";
         }
         function disableChief() {
             $('#chief').disabled=true;
