@@ -25,14 +25,43 @@ session_start();
         function hide(c) {
             $("."+c).classList.add("hidden");
         }
-        function enableChief() {
+        function setDefaultJobs() {
             $('#chief').disabled=false;
             $('#chief+label').onclick = "show('chief-question');hide('vol-question');";
+            $('#chief+label').innerText = "chief";
+            $('#vol+label').innerText = "vol";
+        }
+        function addMedia() {
+            $('#chief+label').innerText = "Chief of Media";
+            $('#vol+label').innerText = "Vol of Media";
         }
         function disableChief() {
-            $('#chief').disabled=true;
-            $('#vol+label').click();
+            $('#chief').disabled = true;
+            $('#vol').checked = true;
             $('#chief+label').onclick = "";
+        }
+        function setJobs() {
+            setDefaultJobs();
+            switch(true) {
+                case $("#media").checked:
+                    addMedia();
+                    break;
+                case $("#general").checked:
+                    disableChief();
+                    break;
+            }
+        }
+        function setQuestion() {
+            hide('chief-question');
+            hide('vol-question');
+            switch(true) {
+                case $("#chief").checked:
+                    show('chief-question');
+                    break;
+                case $("#vol").checked:
+                    show('vol-question');
+                    break;
+            }
         }
         function showError() {
             var errorText = document.querySelector("div.error");
@@ -224,46 +253,46 @@ if (!isset($_SESSION["userid"])) {
                     <ul class="team-selector">
                         <li>
                             <input type="radio" name="team" value="staff" id="staff" style="display:none;" checked="checked"/>
-                            <label for="staff" class="nowrap" onclick="enableChief();">Member of Staff</label>
+                            <label for="staff" class="nowrap">Member of Staff</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="operation" id="operation" style="display:none;"/>
-                            <label for="operation" class="nowrap" onclick="enableChief();">Member of Operation</label>
+                            <label for="operation" class="nowrap">Member of Operation</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="media" id="media" style="display:none;"/>
-                            <label for="media" class="nowrap" onclick="enableChief();">Member of Media</label>
+                            <label for="media" class="nowrap">Member of Media & Tech</label>
                         </li>
                         <li>
                             <input type="radio" name="team" value="communication" id="communication" style="display:none;"/>
-                            <label for="communication" class="nowrap" onclick="enableChief();">Member of Communication</label>
+                            <label for="communication" class="nowrap">Member of Communication</label>
                         </li>
                     </ul>
                     <ul class="team-selector">
                         <li>
                             <input type="radio" name="team" value="general" id="general" style="display:none;"/>
-                            <label for="general" class="nowrap" onclick="disableChief();">General Conference Volunteer</label>
+                            <label for="general" class="nowrap">General Conference Volunteer</label>
                         </li>
                     </ul>
                     <br/>
                     <button type="button" onclick="hide('team');show('welcome')">Back</button>
-                    <button type="button" onclick="hide('team');show('job')">Next</button>
+                    <button type="button" onclick="setJobs();hide('team');show('job')">Next</button>
                 </div>
                 <div class="job hidden">
                     <h2>Job:</h2>
                     <ul class="job-selector">
                         <li>
                             <input type="radio" name="job" value="chief" id="chief" style="display:none;" checked="checked"/>
-                            <label for="chief" onclick="show('chief-question');hide('vol-question');">chief</label>
+                            <label for="chief">chief</label>
                         </li>
                         <li>
                             <input type="radio" name="job" value="vol" id="vol" style="display:none;"/>
-                            <label for="vol" onclick="show('vol-question');hide('chief-question');">vol</label>
+                            <label for="vol">vol</label>
                         </li>
                     </ul>
                     <br/>
                     <button type="button" onclick="hide('job');show('team')">Back</button>
-                    <button type="button" onclick="hide('job');show('questions')">Next</button>
+                    <button type="button" onclick="setQuestion();hide('job');show('questions')">Next</button>
                 </div>
                 <div class="questions hidden">
                     <h2>Personal Introduction:</h2>
