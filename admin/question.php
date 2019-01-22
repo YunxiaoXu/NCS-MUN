@@ -10,7 +10,7 @@ require "../sql/sql.php";
 $email = $_GET["email"];
 $question = $_GET["q"];
 
-$select = "SELECT d.cname, d.ename, d.team, d.job, q.$question FROM delegate d INNER JOIN question q ON d.id=q.id WHERE d.email='$email'";
+$select = "SELECT d.cname, d.ename, d.team, d.job, q.$question FROM volunteer d INNER JOIN question q ON d.id=q.id WHERE d.email='$email'";
 
 $row = $conn->query($select)->fetch_assoc();
 ?>

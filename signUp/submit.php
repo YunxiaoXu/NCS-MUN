@@ -41,14 +41,14 @@ $vol1 = htmlspecialchars($_POST["vol1"], ENT_QUOTES);
 
 require "../sql/sql.php";
 
-$select = "SELECT id FROM delegate WHERE cname='$cname' and email='$email'";
+$select = "SELECT id FROM volunteer WHERE cname='$cname' and email='$email'";
 $repeatingCheck = $conn->query($select);
 
 if ($repeatingCheck->fetch_assoc()) {
     print("<script>alert('Same name and email already exit.');history.go(-1);</script>");
 }
 
-$insert = "INSERT INTO delegate (cname, ename, grade, email,
+$insert = "INSERT INTO volunteer (cname, ename, grade, email,
  wechat, team, job, chief1, vol, submission_date) VALUES
  ('$cname', '$ename', $grade, '$email', '$wechat','$team', '$job', '".
  ($job=="chief"?"<a href=\'question.php?email=$email&q=chief1\'>chief1</a>":" - ")."', '".

@@ -21,7 +21,7 @@ if (!isset($_SESSION["userid"]) || $_SESSION['userrole']!=="admin") {
 
 <?php
 echo "<span class='option'>";
-echo "<a href='download.php?db=delegate";
+echo "<a href='download.php?db=volunteer";
 echo isset($_GET["filter"])?"&filter=".$_GET["filter"]:"";
 echo "'>Download</a>";
 echo "</span>";
@@ -33,7 +33,7 @@ echo "</span>";
 ?>
 
     <br/>
-    <h1>all delegate requests</h1>
+    <h1>all volunteer requests</h1>
     <form method="GET" action="check.php">
         <input type="text" id="filter" name="filter"/>
         <button type="submit">search</button>
@@ -42,27 +42,27 @@ echo "</span>";
 
 <?php
 require "../sql/sql.php";
-$queryString = "SELECT * FROM delegate";
+$queryString = "SELECT * FROM volunteer";
 if ($filter = $_GET["filter"]) {
     $queryString = "$queryString where $filter";
 }
 //echo $queryString;
 $query = $conn->query($queryString);
-$delegate = $query->fetch_assoc();
+$volunteer = $query->fetch_assoc();
 
 echo "<tr>";
-foreach($delegate as $k=>$v) {
+foreach($volunteer as $k=>$v) {
     echo "<th>$k</th>";
 }
 echo "</tr>";
 
 do {
     echo "<tr>";
-    foreach($delegate as $v) {
+    foreach($volunteer as $v) {
         echo "<td>$v</td>";
     }
     echo "</tr>";
-} while($delegate = $query->fetch_assoc());
+} while($volunteer = $query->fetch_assoc());
 
 ?>
 
