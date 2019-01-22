@@ -283,11 +283,11 @@ if (!isset($_SESSION["userid"])) {
                     <ul class="job-selector">
                         <li>
                             <input type="radio" name="job" value="chief" id="chief" style="display:none;" checked="checked"/>
-                            <label for="chief">chief</label>
+                            <label for="chief" class="nowrap">chief</label>
                         </li>
                         <li>
                             <input type="radio" name="job" value="vol" id="vol" style="display:none;"/>
-                            <label for="vol">vol</label>
+                            <label for="vol" class="nowrap">vol</label>
                         </li>
                     </ul>
                     <br/>
