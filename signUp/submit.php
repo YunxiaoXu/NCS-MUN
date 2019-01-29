@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>submit</title>
         <style>
             table {
@@ -14,7 +15,7 @@
     </head>
     <body>
         <h1>submit</h1>
-            <table>
+            <!-- <table>
 
 <?php
 foreach($_POST as $k=>$v) {
@@ -24,7 +25,7 @@ foreach($_POST as $k=>$v) {
 }
 ?>
 
-        </table>
+        </table> -->
 
 <?php
 $cname = $_POST["cname"];
@@ -64,12 +65,16 @@ if ($conn->query($insert) === true) {
     
     if ($conn->query($insert2)===true) {
         echo "<p>You have successfully signed up!</p>";
+        echo "<p>Please wait for the official notification email.</p>";
     } else {
         echo "<p>Sign up Failed. Please check the questions.</p>";
     }
 } else {
         echo "<p>Sign up Failed. Please check the information.</p>";
 }
+
+echo "<br/>";
+echo "<p>If you have any question, please contact <a href='mailto:contact@ncmunc.org'>contact@ncmunc.org</a>.</p>";
 ?>
     </body>
 </html>
