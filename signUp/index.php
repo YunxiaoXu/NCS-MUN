@@ -243,7 +243,7 @@ if (!isset($_SESSION["userid"])) {
             <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
                 <div class="welcome" style="text-align:center">
                     <h1>NCMUNC_2019 Sign Up</h1>
-                    <p>Welcome to NorthCross MUN Conference_2019!</p>
+                    <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>
                     <p>Annually Model UN Conference</p>
                     <br/>
                     <button type="button" onclick="hide('welcome');show('team')">Next</button>
