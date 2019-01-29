@@ -226,17 +226,17 @@ session_start();
 <body>
     <div class="wrapper">
         <div class="header">
-            <span class="login"> 
+            <!-- <span class="login"> 
 
 <?php
 if (!isset($_SESSION["userid"])) {
-    echo "<a href='/login.php?from=/signUp/'>login</a";
+    echo "<a href='/login.php?from=/signUp/'>login</a>";
 } else {
     echo $_SESSION["username"]." | <a href='/login.php?logout=true'>logout</a>";
 }
 ?>
 
-            </span>
+            </span> -->
         </div>
         <div class="bg"></div>
         <div class="content">
