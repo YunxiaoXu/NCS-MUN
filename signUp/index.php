@@ -14,17 +14,11 @@ session_start();
     <meta name="render" content="webkit">
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="/assets/js/common.js"></script>
     <script>
         var inputs = {cname:"Chinese Name", ename:"English Name", grade:"School Year", email:"E-mail",
             wechat:"WeChat",team:"Team", job:"Job", chief1:"First Question for Chief",
             chief2:"Second Question for Chief", vol1:"Question for Vol"};
-        var $ = document.querySelector.bind(document);
-        function show(c) {
-            $("."+c+".hidden").classList.remove("hidden");
-        }
-        function hide(c) {
-            $("."+c).classList.add("hidden");
-        }
         function setDefaultJobs() {
             $('#chief').disabled=false;
             $('#chief+label').onclick = "show('chief-question');hide('vol-question');";
@@ -81,58 +75,14 @@ session_start();
             }
         }
     </script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/common.css" />
     <style>
-        html, body {
-            margin: 0px;
-            height: 100%;
-        }
-        .wrapper {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            /*top: 1.4rem;
-            bottom: 1.4rem;*/
-        }
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 30px;
-            background-color: rgba(200,200,200,.5);
-            z-index: 1000;
-            display: flex;
-            display: -webkit-flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
         .login {
             padding-right: 16px;
         }
         .bg {
-            position: fixed;
             top: 20px;
             height: 90%;
-            width: 100%;
-            background-image: url(/assets/pic/ncmunc.png);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size:contain;
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-            opacity: 0.6;
-            z-index: -1;
-        }
-        .content {
-            position: relative;
-            /* top: 22px; */
-            /* bottom: 22px; */
-            min-height: 100%;
-            width: 64%;
-            padding: 0 8%;
-            margin: 0 10% 0px 10%;
-            background-color: rgba(33,29,243,.03);
-            /* overflow-x: hidden; */
-            overflow-y: auto;
         }
         h1 {
             margin-top: 80px;
@@ -141,43 +91,14 @@ session_start();
             margin-top: 60px;
         }
         ul {
-            list-style: none;
             padding-left: 16px;
             margin-bottom: 26px;
         }
         li {
-            display: inline;
             line-height: 44px;
-        }
-        label {
-            padding: 5px 10px;
-            border: solid 1px #dadce0;
-            border-radius: 3pt;
-            color: #1a73e8;
-            background-image: linear-gradient(to bottom, rgba(200,200,200,0.12), rgba(200,200,200,0.12));
-            background-color: white;
-            cursor: pointer;
-        }
-        .nowrap {
-            white-space: nowrap;
-        }
-        input[type=radio]:checked+label {
-            background-image: linear-gradient(to bottom, rgba(66, 133,244,.08), rgba(66, 133,244,.32));
-        }
-        input[type=radio]:disabled+label {
-            cursor: not-allowed;
-            color: gray;
-            background-image: linear-gradient(to bottom, rgba(128, 128,128,.2), rgba(128, 128,128,.2));
-        }
-        input {
-            width: 100%; /* 128px;*/
-            border: solid 1px gray;
         }
         button {
             margin-bottom: 30px;
-        }
-        .hidden {
-            display: none;
         }
         textarea {
             resize:none;
@@ -187,39 +108,6 @@ session_start();
         }
         .questions span {
             padding: 3px;
-        }
-        .error {
-            color: red;
-        }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            /* height: 22px; */
-            line-height: 40px;
-            text-align: center;
-            vertical-align: bottom;
-            width: 100%;
-            background-color: antiquewhite;
-        }
-        .narrow {
-            display: none;
-        }
-        @media only screen and (max-width:500px) {
-            .header {
-                height: 22px;
-            }
-            .footer {
-                line-height: 22px;
-            }
-            .wide {
-                display: none;
-            }
-            .narrow {
-                display: initial;
-            }
-        }
-        a {
-            text-decoration: none;
         }
     </style>
 </head>
