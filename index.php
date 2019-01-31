@@ -17,8 +17,8 @@ session_start();
     <script src="/assets/js/common.js"></script>
     <script>
         function changeMenuBar() {
-            menubar = $(".headerMiddle").classList;
-            menubtn = $(".headerRight .narrow a.iconfont").classList;
+            var menubar = $(".headerMiddle").classList;
+            var menubtn = $(".headerRight .narrow a.iconfont").classList;
             if (menubar.contains("active")) {
                 menubar.remove("active");
                 menubtn.remove("icon-close");
@@ -27,6 +27,16 @@ session_start();
                 menubar.add("active");
                 menubtn.remove("icon-menu");
                 menubtn.add("icon-close");
+            }
+        }
+        window.onscroll = function() {
+            var position = document.documentElement.scrollTop;
+            var height = document.documentElement.clientHeight*0.6;
+            var up = $(".up")
+            if (position > height) {
+                up.style.display = "initial";
+            } else {
+                up.style.display = "none";
             }
         }
     </script>
@@ -86,6 +96,9 @@ session_start();
         }
         .header li {
             margin: 0 10px;
+        }
+        .header .headerMiddle a {
+            color: initial;
         }
         .header .headerMiddle a:hover {
             color: #b81a2f;
@@ -287,7 +300,7 @@ session_start();
             <div class="mainContent">
                 <div class="about">
                     <h1 id="about">About</h2>
-                    <p> The NorthCross Model United Nations Conference is an annually student-run Model UN conference. </p>
+                    <p> The NorthCross Model United Nations Conference is an annually <em>student-run</em> Model UN conference. </p>
                     <br/><br/>
                 </div>
                 <div class="news">
