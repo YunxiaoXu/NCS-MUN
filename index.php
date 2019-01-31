@@ -87,11 +87,12 @@ session_start();
             top: 0;
             left: 50%;
             margin-top: 30px;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scaleY(0);
             opacity: 0;
         }
         .header .headerRight a:hover span {
             opacity: 1;
+            transform: translateX(-50%) scaleY(1);
         }
         .headerRight img {
             height: 14px;
@@ -99,6 +100,9 @@ session_start();
         }
         .wechat {
             opacity
+        }
+        .headerMiddle a:visited {
+            color: initial;
         }
         @media only screen and (max-width:700px) {
             .header .narrow {
@@ -125,8 +129,12 @@ session_start();
                 background-color: #f8f8f8;
                 /* display: block; */
             }
+            .headerMiddle ul {
+                padding-left: 20px;
+            }
             .headerMiddle li {
                 display: list-item;
+                padding-bottom: 10px;
             }
             .header .headerRight a {
                 font-size: medium;
