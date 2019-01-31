@@ -17,14 +17,14 @@ session_start();
     <script src="/assets/js/common.js"></script>
     <script>
         function changeMenuBar() {
-            menubar = $(".headerMiddle.wide").classList;
+            menubar = $(".headerMiddle").classList;
             menubtn = $(".headerRight .narrow a.iconfont").classList;
-            if (menubar.contains("show")) {
-                menubar.remove("show");
+            if (menubar.contains("active")) {
+                menubar.remove("active");
                 menubtn.remove("icon-close");
                 menubtn.add("icon-menu");
             } else {
-                menubar.add("show");
+                menubar.add("active");
                 menubtn.remove("icon-menu");
                 menubtn.add("icon-close");
             }
@@ -49,26 +49,45 @@ session_start();
             padding: 0;
             width: 100%;
         }
+        .footer {
+            position: relative;
+            background-color: #f4f4f4;
+        }
         .mainContent {
             padding: 0 16px;
+        }
+        .up {
+            position: fixed;
+            bottom: 12%;
+            right: 10px;
+            font-size: xx-large;
+            color: white;
+            padding: 5px 6px;
+            background-color: gray;
+            border-radius: 3px;
+        }
+        .up:hover {
+            background-color: #f44444;
         }
         .headerLeft {
             font-family: "Times New Roman",Georgia,Serif;
             font-size: larger;
             padding-left: 32px;
-            margin-right: -48px;
+            margin-right: -10%;
         }
         .headerMiddle {
-            padding-right: 32px;
+            /* padding-right: 32px; */
             font-weight: bold;
             font-size: large;
         }
         .headerRight {
-            font-family: Arial, Serif;
             padding-right: 32px;
         }
         .header li {
             margin: 0 10px;
+        }
+        .header .headerMiddle a:hover {
+            color: #b81a2f;
         }
         .header .headerRight a {
             position: relative;
@@ -88,6 +107,7 @@ session_start();
             left: 50%;
             margin-top: 30px;
             transform: translateX(-50%) scaleY(0);
+            font-family: Arial, Serif;
             opacity: 0;
         }
         .header .headerRight a:hover span {
@@ -103,6 +123,59 @@ session_start();
         }
         .headerMiddle a:visited {
             color: initial;
+        }
+        .clearfix:before, .clearfix:after {
+            display: table;
+            content: "";
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .news ul {
+            margin: 40px 16px 0;
+            padding: 0;
+        }
+        .news li {
+            display: list-item;
+            width: 30%;
+            float: left;
+            padding: 0 1.5%;
+        }
+        .newstitle {
+            height: 90px;
+            font-size: 18px;
+            overflow: hidden;
+            font-family: arial;
+        }
+        .newsfooter {
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .news li a.iconfont {
+            display: block;
+            float: right;
+            text-align: center;
+            line-height: 60px;
+            height: 60px;
+            width: 60px;
+            font-size: 20px;
+            color: white;
+            background-color: #b81a2f;
+            border-radius: 50%;
+            transform: rotate(90deg);
+        }
+        .time {
+            float: left;
+            font-family: "times new roman";
+        }
+        .date {
+            display: block;
+            font-size: 30px;
+            line-height: 30px;
+            padding-bottom: 10px;
+        }
+        .year {
+
         }
         @media only screen and (max-width:700px) {
             .header .narrow {
@@ -124,10 +197,16 @@ session_start();
             .headerMiddle {
                 position: fixed;
                 top: 32px;
-                right: 0px;
+                right: -160px;
                 height: 100%;
+                width: 160px;
                 background-color: #f8f8f8;
                 /* display: block; */
+                transition: all 0.4s;
+
+            }
+            .headerMiddle.active {
+                right: 0px;
             }
             .headerMiddle ul {
                 padding-left: 20px;
@@ -139,6 +218,9 @@ session_start();
             .header .headerRight a {
                 font-size: medium;
             }
+            .mainContent #news+ul li {
+                display: list-item;
+            }
         }
         </style>
 </head>
@@ -149,8 +231,9 @@ session_start();
                 <p class="wide">NorthCross Model UN Conference</p>
                 <p class="narrow">NorthCross MUN Conference</p>
             </div>
-            <div class="headerMiddle wide">
+            <div class="headerMiddle">
                 <ul>
+                    <li><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#news">News</a></li>
                     <li><a href="#application">Application</a></li>
@@ -165,7 +248,7 @@ session_start();
                     </li>
                     <li>
                         <a class="iconfont icon-wechat-fill" href="javascript:void(0);">
-                            <span>WeChat</span>
+                            <span>N/A</span>
                         </a>
                     </li>
                     <li class="narrow">
@@ -180,15 +263,60 @@ session_start();
         <div class="content">
             <img class="wide" src="/assets/pic/ncmunc_long.png" width="100%"/>
             <img class="narrow" src="/assets/pic/ncmunc.png" width="100%"/>
+            <a class="iconfont icon-up up" href="#"></a>
             <div class="mainContent">
-                <h1 id="about">About</h2>
-                <p> The NorthCross Model United Nations Conference is an annually student-run Model UN conference. </p>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <h1 id="news">News</h2><br/>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <h1 id="application">Application</h2>
-                <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div class="about">
+                    <h1 id="about">About</h2>
+                    <p> The NorthCross Model United Nations Conference is an annually student-run Model UN conference. </p>
+                    <br/><br/>
+                </div>
+                <div class="news">
+                    <h1 id="news">News</h2>
+                    <ul class="clearfix">
+                        <li>
+                            <div class="newstitle">
+                                <a>News 1</a>
+                            </div>
+                            <div class="newsfooter clearfix">
+                                <div class="time">
+                                    <span class="date">01.31</span>
+                                    <span class="year">2019</span>
+                                </div>
+                                <a href="#news" class="iconfont icon-up"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="newstitle">
+                                <a>News 2</a>
+                            </div>
+                            <div class="newsfooter clearfix">
+                                <div class="time">
+                                    <span class="date">01.31</span>
+                                    <span class="year">2019</span>
+                                </div>
+                                <a href="#news" class="iconfont icon-up"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="newstitle">
+                                <a>News 3</a>
+                            </div>
+                            <div class="newsfooter clearfix">
+                                <div class="time">
+                                    <span class="date">01.31</span>
+                                    <span class="year">2019</span>
+                                </div>
+                                <a href="#news" class="iconfont icon-up"></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <br/><br/>
+                </div>
+                <div class="application">
+                    <h1 id="application">Application</h2>
+                    <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
+                    <br/><br/>
+                </div>
             </div>
         </div>
         <div class="footer">
