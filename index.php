@@ -18,20 +18,27 @@ session_start();
     <script>
         function changeMenuBar() {
             menubar = $(".headerMiddle.wide").classList;
+            menubtn = $(".headerRight .narrow a.iconfont").classList;
             if (menubar.contains("show")) {
                 menubar.remove("show");
+                menubtn.remove("icon-close");
+                menubtn.add("icon-menu");
             } else {
                 menubar.add("show");
+                menubtn.remove("icon-menu");
+                menubtn.add("icon-close");
             }
         }
     </script>
     <link rel="stylesheet" type="text/css" href="/assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/iconfont.css" />
     <style>
-        h2 {
+        h1 {
             padding: 48px 0 0 16px;
         }
         .content p {
             margin: 4px 4px 4px 20px;
+            font-size: large;
         }
         .header {
             /* background-color: rgba(255, 255, 255, 0.5); */
@@ -39,8 +46,11 @@ session_start();
         }
         .content {
             margin: 30px 0 0 0;
-            padding: 0 16px;
+            padding: 0;
             width: 100%;
+        }
+        .mainContent {
+            padding: 0 16px;
         }
         .headerLeft {
             font-family: "Times New Roman",Georgia,Serif;
@@ -60,9 +70,35 @@ session_start();
         .header li {
             margin: 0 10px;
         }
+        .header .headerRight a {
+            position: relative;
+            color: black;
+            font-size: large;   
+            display: inline-block;
+            transition: all 0.4s;
+        }
+        .header .headerRight a:hover {
+            color: #b81a2f;
+            transform: translateY(-2px);
+        }
+        .header .headerRight a span {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-top: 30px;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+        .header .headerRight a:hover span {
+            opacity: 1;
+        }
         .headerRight img {
             height: 14px;
             vertical-align: text-top;
+        }
+        .wechat {
+            opacity
         }
         @media only screen and (max-width:700px) {
             .header .narrow {
@@ -92,6 +128,9 @@ session_start();
             .headerMiddle li {
                 display: list-item;
             }
+            .header .headerRight a {
+                font-size: medium;
+            }
         }
         </style>
 </head>
@@ -111,9 +150,21 @@ session_start();
             </div>
             <div class="headerRight">
                 <ul>
-                    <li>Email</li>
-                    <li>WeChat</li>
-                    <li class="narrow"><a href="javascript:changeMenuBar();"><img src="/assets/pic/menubar.png"/></a></li>
+                    <li>
+                        <a class="iconfont icon-mail-fill" href="javascript:void(0);">
+                            <span>contact@ncmunc.org</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="iconfont icon-wechat-fill" href="javascript:void(0);">
+                            <span>WeChat</span>
+                        </a>
+                    </li>
+                    <li class="narrow">
+                        <a class="iconfont icon-menu" href="javascript:changeMenuBar();">
+                            <!--img src="/assets/pic/menubar.png"/-->
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -121,14 +172,16 @@ session_start();
         <div class="content">
             <img class="wide" src="/assets/pic/ncmunc_long.png" width="100%"/>
             <img class="narrow" src="/assets/pic/ncmunc.png" width="100%"/>
-            <h2 id="about">About</h2>
-            <p> NorthCross Model UN Conference Introduction </p>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <h2 id="news">News</h2><br/>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            <h2 id="application">Application</h2>
-            <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="mainContent">
+                <h1 id="about">About</h2>
+                <p> The NorthCross Model United Nations Conference is an annually student-run Model UN conference. </p>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <h1 id="news">News</h2><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <h1 id="application">Application</h2>
+                <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            </div>
         </div>
         <div class="footer">
             &copy; 2018-<?php echo date("Y")?>&nbsp;
