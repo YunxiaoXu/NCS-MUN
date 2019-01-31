@@ -65,6 +65,7 @@ session_start();
             padding: 5px 6px;
             background-color: gray;
             border-radius: 3px;
+            z-index: 1000;
         }
         .up:hover {
             background-color: #f44444;
@@ -143,13 +144,14 @@ session_start();
         }
         .newstitle {
             height: 90px;
-            font-size: 18px;
+            font-size: 20px;
             overflow: hidden;
             font-family: arial;
         }
         .newsfooter {
             padding: 15px 0;
-            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #c5c5c5;
         }
         .news li a.iconfont {
             display: block;
@@ -163,6 +165,19 @@ session_start();
             background-color: #b81a2f;
             border-radius: 50%;
             transform: rotate(90deg);
+        }
+        .morenews {
+            background-color:rgba(255,255,255,.5);
+            border: solid #b81a2f 1px;
+            border-radius: 2px;
+            padding: 3px 12px;
+            margin: 20px auto -20px;
+            text-align: center;
+            width: 85px;
+        }
+        .morenews a {
+            color: #b81a2f;
+            font-size: large;
         }
         .time {
             float: left;
@@ -220,6 +235,11 @@ session_start();
             }
             .mainContent #news+ul li {
                 display: list-item;
+                width: 100%;
+                margin: 32px auto;
+                padding: 5px 4px 0;
+                background-color: rgba(255, 255, 255, .5);
+                float: none;
             }
         }
         </style>
@@ -275,7 +295,7 @@ session_start();
                     <ul class="clearfix">
                         <li>
                             <div class="newstitle">
-                                <a>News 1</a>
+                                <a>News 1 | This is the first news.</a>
                             </div>
                             <div class="newsfooter clearfix">
                                 <div class="time">
@@ -287,7 +307,7 @@ session_start();
                         </li>
                         <li>
                             <div class="newstitle">
-                                <a>News 2</a>
+                                <a>News 2 | This is the second news.</a>
                             </div>
                             <div class="newsfooter clearfix">
                                 <div class="time">
@@ -299,7 +319,7 @@ session_start();
                         </li>
                         <li>
                             <div class="newstitle">
-                                <a>News 3</a>
+                                <a>News 3 | This is the third news.</a>
                             </div>
                             <div class="newsfooter clearfix">
                                 <div class="time">
@@ -310,12 +330,13 @@ session_start();
                             </div>
                         </li>
                     </ul>
+                    <div class="morenews"><a href="#news"><span style="padding-right:10px;">More</span> ></a></div>
                     <br/><br/>
                 </div>
                 <div class="application">
                     <h1 id="application">Application</h2>
                     <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
-                    <br/><br/>
+                    <br/><br/><br/><br/><br/><br/>
                 </div>
             </div>
         </div>
