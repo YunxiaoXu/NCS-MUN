@@ -114,6 +114,7 @@ session_start();
 <body>
     <div class="wrapper">
         <div class="header">
+            <p style="font-family:'times new roman';padding-left:16px;">NorthCross Model UN Conference</p>
             <!-- <span class="login"> 
 
 <?php
