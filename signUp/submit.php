@@ -66,6 +66,7 @@ if ($conn->query($insert) === true) {
     if ($conn->query($insert2)===true) {
         echo "<p>You have successfully signed up!</p>";
         echo "<p>Please wait for the official notification email.</p>";
+        shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
     } else {
         echo "<p>Sign up Failed. Please check the questions.</p>";
     }
