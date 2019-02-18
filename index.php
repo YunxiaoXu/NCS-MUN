@@ -322,7 +322,7 @@ while ($news[] = $query->fetch_assoc()){
                                     <span class="date"><?php echo substr($news[0]["add_date"],5,5)?></span>
                                     <span class="year"><?php echo substr($news[0]["add_date"],0,4)?></span>
                                 </div>
-                                <a href="#news" class="iconfont icon-up"></a>
+                                <a href="/news/news.php?id=<?php echo $news[0]["id"]?>" class="iconfont icon-up"></a>
                             </div>
                         </li>
                         <li>
@@ -334,7 +334,7 @@ while ($news[] = $query->fetch_assoc()){
                                     <span class="date"><?php echo substr($news[1]["add_date"],5,5)?></span>
                                     <span class="year"><?php echo substr($news[1]["add_date"],0,4)?></span>
                                 </div>
-                                <a href="#news" class="iconfont icon-up"></a>
+                                <a href="/news/news.php?id=<?php echo $news[1]["id"]?>" class="iconfont icon-up"></a>
                             </div>
                         </li>
                         <li>
@@ -346,7 +346,7 @@ while ($news[] = $query->fetch_assoc()){
                                     <span class="date"><?php echo substr($news[2]["add_date"],5,5)?></span>
                                     <span class="year"><?php echo substr($news[2]["add_date"],0,4)?></span>
                                 </div>
-                                <a href="#news" class="iconfont icon-up"></a>
+                                <a href="/news/news.php?id=<?php echo $news[2]["id"]?>" class="iconfont icon-up"></a>
                             </div>
                         </li>
                     </ul>

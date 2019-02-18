@@ -2,10 +2,18 @@
 session_start();
 
 require "../sql/sql.php";
-$select = "select * from news order by id desc";
+
+if (!isset($_GET["id"])) {
+    header("Content-type:text/html;charset=uft-8");
+    header("location:/news/");
+}
+$id = $_GET["id"];
+$select = "select * from news where id=$id";
 $query = $conn->query($select);
-$news = [];
-while ($news[] = $query->fetch_assoc()){
+$news = $query->fetch_assoc();
+if (!$news) {
+    header("status: 404 Not Found");
+    exit('<h1>Not Found</h1><a href="javascript:history.go(-1);">back</a>');
 }
 ?>
 
@@ -123,41 +131,16 @@ while ($news[] = $query->fetch_assoc()){
         .mainContent .title {
             text-align: center;
         }
-        .mainContent ul {
-            padding-left: 0;
+        .info {
+            color: #757575;
+            margin: 5px 10px;
         }
-        li.news {
-            display: list-item;
-        }
-        li.news a {
-            color: initial;
-        }
-        li.news a:visited {
-            color: initial;
-        }
-        .newstitle {
-            height: 90px;
-            font-size: 20px;
-            overflow: hidden;
-            font-family: arial;
-        }
-        .newsfooter {
-            padding: 15px 0;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #c5c5c5;
-        }
-        .time {
-            float: left;
-            font-family: "times new roman";
-        }
-        .date {
-            display: block;
-            font-size: 30px;
-            line-height: 30px;
-            padding-bottom: 10px;
-        }
-        .year {
-
+        .newsContent {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 24px;
+            text-indent: 2em;
         }
         .clearfix:before, .clearfix:after {
             display: table;
@@ -248,29 +231,18 @@ while ($news[] = $query->fetch_assoc()){
         <div class="content">
             <div class="container clearfix">
                 <div class="mainContent">
-                    <h1 class="title">News</h1>
-                    <ul>
-                        <?php
-                        foreach($news as $n){
-                            if (!$n) {continue;}
-                            echo '
-                        <li class="news">
-                            <a href="/news/news.php?id='.$n['id'].'">
-                                <img src="/assets/pic/ncmunc.png" width="10%" style="float: left;">
-                                <div class="newsinfo">
-                                    <div class="newstitle">'.$n['title'].'</div>
-                                    <div class="newsfooter clearfix">
-                                        <div class="time">
-                                            <span class="date">'.substr($n['add_date'],5,5).'</span>
-                                            <span class="year">'.substr($n['add_date'],0,4).'</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>';
-                        }
-                        ?>
-                    </ul>
+                    <?php
+                    echo "
+                    <h1 class='title'>{$news[title]}</h1>
+                    <div style='text-align:center;'>
+                        <span class='info'>Date: {$news[add_date]}</span>
+                        <span class='info'>Author: {$news[author]}</span>
+                    </div>
+                    <hr width='90%'>
+                    <br/>
+                    <p class='newsContent'>{$news[content]}</p>
+                    "
+                    ?>
                 </div>
             </div>
         </div>
