@@ -146,11 +146,12 @@ if (!$news) {
             margin: 0 auto;
             font-size: 18px;
             line-height: 24px;
+        }
+        .newsContent p {
             text-indent: 2em;
         }
         .newsContent img {
             width: 90%;
-            text-indent: 0;
         }
         .clearfix:before, .clearfix:after {
             display: table;
