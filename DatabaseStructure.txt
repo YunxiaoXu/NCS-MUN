@@ -36,3 +36,15 @@ mun.question
 | chief1 | varchar(1200)    | utf8_general_ci | YES  |     |       |
 | vol    | varchar(1200)    | utf8_general_ci | YES  |     |       |
 +--------+------------------+-----------------+------+-----+-------+ 
+
+mun.news
++----------+------------------+------+-----+---------+----------------+
+| Field    | Type             | Null | Key | Default | Extra          |
++----------+------------------+------+-----+---------+----------------+
+| id       | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(128)     | NO   |     | NULL    |                |
+| keywords | varchar(128)     | YES  |     | NULL    |                |
+| author   | varchar(128)     | NO   |     | NULL    |                |
+| add_date | date             | NO   |     | NULL    |                |
+| content  | text             | NO   |     | NULL    |                |
++----------+------------------+------+-----+---------+----------------+

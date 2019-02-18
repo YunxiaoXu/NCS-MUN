@@ -46,7 +46,7 @@ $select = "SELECT id FROM volunteer WHERE cname='$cname' and email='$email'";
 $repeatingCheck = $conn->query($select);
 
 if ($repeatingCheck->fetch_assoc()) {
-    print("<script>alert('Same name and email already exit.');history.go(-1);</script>");
+    die("<script>alert('Same name and email already exist.');history.go(-1);</script>");
 }
 
 $insert = "INSERT INTO volunteer (cname, ename, grade, email,
