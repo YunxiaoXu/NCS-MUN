@@ -150,6 +150,9 @@ if (!$news) {
         .newsContent p {
             text-indent: 2em;
         }
+        .newsContent ol {
+            padding-left: 0;
+        }
         .newsContent img {
             width: 90%;
         }
