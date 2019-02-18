@@ -50,9 +50,6 @@ if (!$news) {
             }
         }
         var converter = new showdown.Converter();
-        text = "<?php echo $news[content]?>";
-        html = converter.makeHtml(text);
-        document.querySelector("div.newsContent").innerHTML = html;
     </script>
     <link rel="stylesheet" type="text/css" href="/assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/iconfont.css" />
@@ -249,10 +246,16 @@ if (!$news) {
                     </div>
                     <hr width='90%'>
                     <br/>
-                    <div class='newsContent'></p>
+                    <div class='newsContent'>{$news[content]}</p>
                     "
                     ?>
                 </div>
+                <script>
+                    newsContent = document.querySelector("div.newsContent");
+                    text = newsContent.innerHTML;
+                    html = converter.makeHtml(text);
+                    newsContent.innerHTML = html;
+                </script>
             </div>
         </div>
         <div class="footer">
