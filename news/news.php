@@ -34,6 +34,7 @@ if (!$news) {
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/showdown.min.js"></script>
     <script>
         function changeMenuBar() {
             var menubar = $(".headerMiddle").classList;
@@ -48,6 +49,10 @@ if (!$news) {
                 menubtn.add("icon-close");
             }
         }
+        var converter = new showdown.Converter();
+        text = "<?php echo $news[content]?>";
+        html = converter.makeHtml(text);
+        document.querySelector("div.newsContent").innerHTML = html;
     </script>
     <link rel="stylesheet" type="text/css" href="/assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/iconfont.css" />
@@ -244,7 +249,7 @@ if (!$news) {
                     </div>
                     <hr width='90%'>
                     <br/>
-                    <p class='newsContent'>{$news[content]}</p>
+                    <div class='newsContent'></p>
                     "
                     ?>
                 </div>
