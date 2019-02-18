@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require "sql/sql.php";
-$select = "select * from news order by id desc limit 0,3";
+require "../sql/sql.php";
+$select = "select * from news order by id desc";
 $query = $conn->query($select);
 $news = [];
 while ($news[] = $query->fetch_assoc()){
@@ -36,57 +36,23 @@ while ($news[] = $query->fetch_assoc()){
                 menubtn.add("icon-close");
             }
         }
-        window.onscroll = function() {
-            var position = document.documentElement.scrollTop;
-            var height = document.documentElement.clientHeight*0.6;
-            var up = $(".up")
-            if (position > height) {
-                up.style.display = "initial";
-            } else {
-                up.style.display = "none";
-            }
-        }
     </script>
     <link rel="stylesheet" type="text/css" href="/assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/iconfont.css" />
     <style>
-        h1 {
-            padding: 48px 0 0 16px;
-        }
-        .content p {
-            margin: 4px 4px 4px 20px;
-            font-size: large;
-        }
         .header {
             /* background-color: rgba(255, 255, 255, 0.5); */
             height: 48px;
         }
         .content {
-            margin: 30px 0 0 0;
+            margin: 48px 0 0 0;
             padding: 0;
             width: 100%;
         }
         .footer {
             position: relative;
             background-color: #f4f4f4;
-        }
-        .mainContent {
-            padding: 0 16px;
-        }
-        .up {
-            position: fixed;
-            bottom: 12%;
-            right: 10px;
-            font-size: xx-large;
-            color: white;
-            padding: 5px 6px;
-            background-color: gray;
-            border-radius: 3px;
-            z-index: 1000;
-        }
-        .up:hover {
-            background-color: #f44444;
-        }
+        }   
         .headerLeft {
             font-family: "Times New Roman",Georgia,Serif;
             font-size: larger;
@@ -145,22 +111,29 @@ while ($news[] = $query->fetch_assoc()){
         .headerMiddle a:visited {
             color: initial;
         }
-        .clearfix:before, .clearfix:after {
-            display: table;
-            content: "";
+        .container {
+            margin: 0 48px 0 30px;
+            padding: 48px 10px;
+            background-color: rgba(255,255,255,.6);
         }
-        .clearfix:after {
-            clear: both;
+        .mainContent {
+            /* float: right;
+            width: 65%; */
         }
-        .news ul {
-            margin: 40px 16px 0;
-            padding: 0;
+        .mainContent .title {
+            text-align: center;
         }
-        .news li {
+        .mainContent ul {
+            padding-left: 0;
+        }
+        li.news {
             display: list-item;
-            width: 30%;
-            float: left;
-            padding: 0 1.5%;
+        }
+        li.news a {
+            color: initial;
+        }
+        li.news a:visited {
+            color: initial;
         }
         .newstitle {
             height: 90px;
@@ -172,32 +145,6 @@ while ($news[] = $query->fetch_assoc()){
             padding: 15px 0;
             margin-bottom: 16px;
             border-bottom: 1px solid #c5c5c5;
-        }
-        .news li a.iconfont {
-            display: block;
-            float: right;
-            text-align: center;
-            line-height: 60px;
-            height: 60px;
-            width: 60px;
-            font-size: 20px;
-            color: white;
-            background-color: #b81a2f;
-            border-radius: 50%;
-            transform: rotate(90deg);
-        }
-        .morenews {
-            background-color:rgba(255,255,255,.5);
-            border: solid #b81a2f 1px;
-            border-radius: 2px;
-            padding: 3px 12px;
-            margin: 20px auto -20px;
-            text-align: center;
-            width: 85px;
-        }
-        .morenews a {
-            color: #b81a2f;
-            font-size: large;
         }
         .time {
             float: left;
@@ -211,6 +158,13 @@ while ($news[] = $query->fetch_assoc()){
         }
         .year {
 
+        }
+        .clearfix:before, .clearfix:after {
+            display: table;
+            content: "";
+        }
+        .clearfix:after {
+            clear: both;
         }
         @media only screen and (max-width:700px) {
             .header .narrow {
@@ -238,7 +192,6 @@ while ($news[] = $query->fetch_assoc()){
                 background-color: #f8f8f8;
                 /* display: block; */
                 transition: all 0.4s;
-
             }
             .headerMiddle.active {
                 right: 0px;
@@ -253,14 +206,6 @@ while ($news[] = $query->fetch_assoc()){
             .header .headerRight a {
                 font-size: medium;
             }
-            .mainContent #news+ul li {
-                display: list-item;
-                width: 100%;
-                margin: 32px auto;
-                padding: 5px 4px 0;
-                background-color: rgba(255, 255, 255, .5);
-                float: none;
-            }
         }
     </style>
 </head>
@@ -273,10 +218,10 @@ while ($news[] = $query->fetch_assoc()){
             </div>
             <div class="headerMiddle">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#application">Application</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#news">News</a></li>
+                    <li><a href="/#application">Application</a></li>
                 </ul>
             </div>
             <div class="headerRight">
@@ -301,62 +246,31 @@ while ($news[] = $query->fetch_assoc()){
         </div>
         <div class="bg"></div>
         <div class="content">
-            <img class="wide" src="/assets/pic/ncmunc_long.png" width="100%"/>
-            <img class="narrow" src="/assets/pic/ncmunc.png" width="100%"/>
-            <a class="iconfont icon-up up" href="#"></a>
-            <div class="mainContent">
-                <div class="about">
-                    <h1 id="about">About</h2>
-                    <p style="line-height:32px;"> NCMUN Conference 是由North Cross Shanghai MUN Team 筹办的为期三天（7.1-7.3）的模拟联合国会议。其目的在于用真实的会议项目扩大MUN影响力，训练新手，提高学生对于国际事务的关注度，同时增进我校与全国各地高校的友好交流。以共同成长为目标，在活动中锻炼自我。</p>
-                    <br/><br/>
-                </div>
-                <div class="news">
-                    <h1 id="news">News</h2>
-                    <ul class="clearfix">
-                        <li>
-                            <div class="newstitle">
-                                <a><?php echo $news[0]["title"]?></a>
-                            </div>
-                            <div class="newsfooter clearfix">
-                                <div class="time">
-                                    <span class="date"><?php echo substr($news[0]["add_date"],5,5)?></span>
-                                    <span class="year"><?php echo substr($news[0]["add_date"],0,4)?></span>
+            <div class="container clearfix">
+                <div class="mainContent">
+                    <h1 class="title">News</h1>
+                    <ul>
+                        <?php
+                        foreach($news as $n){
+                            if (!$n) {continue;}
+                            echo '\
+                        <li class="news">
+                            <a href="#">
+                                <img src="/assets/pic/ncmunc.png" width="10%" style="float: left;">
+                                <div class="newsinfo">
+                                    <div class="newstitle">'.$n['title'].'</div>
+                                    <div class="newsfooter clearfix">
+                                        <div class="time">
+                                            <span class="date">'.substr($n['add_date'],5,5).'</span>
+                                            <span class="year">'.substr($n['add_date'],0,4).'</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="#news" class="iconfont icon-up"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="newstitle">
-                                <a><?php echo $news[1]["title"]?></a>
-                            </div>
-                            <div class="newsfooter clearfix">
-                                <div class="time">
-                                    <span class="date"><?php echo substr($news[1]["add_date"],5,5)?></span>
-                                    <span class="year"><?php echo substr($news[1]["add_date"],0,4)?></span>
-                                </div>
-                                <a href="#news" class="iconfont icon-up"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="newstitle">
-                                <a><?php echo $news[2]["title"]?></a>
-                            </div>
-                            <div class="newsfooter clearfix">
-                                <div class="time">
-                                    <span class="date"><?php echo substr($news[2]["add_date"],5,5)?></span>
-                                    <span class="year"><?php echo substr($news[2]["add_date"],0,4)?></span>
-                                </div>
-                                <a href="#news" class="iconfont icon-up"></a>
-                            </div>
-                        </li>
+                            </a>
+                        </li>';
+                        }
+                        ?>
                     </ul>
-                    <div class="morenews"><a href="/news/"><span style="padding-right:10px;">More</span> ></a></div>
-                    <br/><br/>
-                </div>
-                <div class="application">
-                    <h1 id="application">Application</h2>
-                    <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
-                    <br/><br/><br/><br/><br/><br/>
                 </div>
             </div>
         </div>
