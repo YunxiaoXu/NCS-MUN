@@ -155,6 +155,7 @@ if (!$news) {
         }
         .newsContent img {
             width: 90%;
+            margin-left: -1em;
         }
         .clearfix:before, .clearfix:after {
             display: table;
