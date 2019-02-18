@@ -145,6 +145,9 @@ while ($news[] = $query->fetch_assoc()){
         .headerMiddle a:visited {
             color: initial;
         }
+        .whitebg {
+            background-color: rgba(255,255,255,.6);
+        }
         .clearfix:before, .clearfix:after {
             display: table;
             content: "";
@@ -305,12 +308,12 @@ while ($news[] = $query->fetch_assoc()){
             <img class="narrow" src="/assets/pic/ncmunc.png" width="100%"/>
             <a class="iconfont icon-up up" href="#"></a>
             <div class="mainContent">
-                <div class="about">
+                <div class="about whitebg">
                     <h1 id="about">About</h2>
                     <p style="line-height:32px;"> NCMUN Conference 是由North Cross Shanghai MUN Team 筹办的为期三天（7.1-7.3）的模拟联合国会议。其目的在于用真实的会议项目扩大MUN影响力，训练新手，提高学生对于国际事务的关注度，同时增进我校与全国各地高校的友好交流。以共同成长为目标，在活动中锻炼自我。</p>
                     <br/><br/>
                 </div>
-                <div class="news">
+                <div class="news whitebg">
                     <h1 id="news">News</h2>
                     <ul class="clearfix">
                         <li>
@@ -353,7 +356,7 @@ while ($news[] = $query->fetch_assoc()){
                     <div class="morenews"><a href="/news/"><span style="padding-right:10px;">More</span> ></a></div>
                     <br/><br/>
                 </div>
-                <div class="application">
+                <div class="application whitebg">
                     <h1 id="application">Application</h2>
                     <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
                     <br/><br/><br/><br/><br/><br/>

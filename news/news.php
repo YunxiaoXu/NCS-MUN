@@ -10,6 +10,10 @@ if (!isset($_GET["id"])) {
 $id = $_GET["id"];
 $select = "select * from news where id=$id";
 $query = $conn->query($select);
+if (!$query) {
+    header("status: 404 Not Found");
+    exit('<h1>Not Found</h1><a href="javascript:history.go(-1);">back</a>');
+}
 $news = $query->fetch_assoc();
 if (!$news) {
     header("status: 404 Not Found");
