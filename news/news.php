@@ -126,7 +126,7 @@ if (!$news) {
             color: initial;
         }
         .container {
-            margin: 0 48px 0 30px;
+            margin: 0 48px;
             padding: 48px 10px;
             background-color: rgba(255,255,255,.6);
         }
@@ -150,6 +150,7 @@ if (!$news) {
         }
         .newsContent img {
             width: 90%;
+            text-indent: 0;
         }
         .clearfix:before, .clearfix:after {
             display: table;
@@ -197,6 +198,9 @@ if (!$news) {
             }
             .header .headerRight a {
                 font-size: medium;
+            }
+            .container {
+                margin: 0 24px;
             }
             .newsContent {
                 width: 100%;
