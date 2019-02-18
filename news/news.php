@@ -148,6 +148,9 @@ if (!$news) {
             line-height: 24px;
             text-indent: 2em;
         }
+        .newsContent img {
+            width: 90%;
+        }
         .clearfix:before, .clearfix:after {
             display: table;
             content: "";
@@ -194,6 +197,9 @@ if (!$news) {
             }
             .header .headerRight a {
                 font-size: medium;
+            }
+            .newsContent {
+                width: 100%;
             }
         }
     </style>
@@ -244,7 +250,7 @@ if (!$news) {
                         <span class='info'>Date: {$news[add_date]}</span>
                         <span class='info'>Author: {$news[author]}</span>
                     </div>
-                    <hr width='90%'>
+                    <hr class='newsContent'/>
                     <br/>
                     <div class='newsContent'>{$news[content]}</p>
                     "
