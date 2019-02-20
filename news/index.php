@@ -211,8 +211,9 @@ while ($news[] = $query->fetch_assoc()){
                 padding: 48px 16px;
             }
             .container img {
-                width: 40%;
-                margin: 0 auto;
+                width: 40% !important;
+                margin: 0 30%;
+                padding: 0 0 5px 0!important;
                 float: none !important;
             }
         }
@@ -265,7 +266,7 @@ while ($news[] = $query->fetch_assoc()){
                             echo '
                         <li class="news">
                             <a href="/news/news.php?id='.$n['id'].'">
-                                <img src="/assets/pic/ncmunc_rect.png" width="10%" style="float: left;">
+                                <img src="/assets/pic/ncmunc_rect.png" style="float:left;width:10%;padding:0 10px 90px 0;">
                                 <div class="newsinfo">
                                     <div class="newstitle">'.$n['title'].'</div>
                                     <div class="newsfooter clearfix">
