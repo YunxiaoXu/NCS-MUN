@@ -15,9 +15,9 @@ while ($news[] = $query->fetch_assoc()){
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>NorthCross Model UN Conference</title>
-    <meta name="keywords" content="NorthCross, MUN, Model UN, NCMUNC, Model UN Conference">
-    <meta name="discription" content="NorthCross Model UN Conference">
+    <title>NCMUNC News</title>
+    <meta name="keywords" content="Northcross, MUN, NCMUNC, NCMUNC News, MUN News, News">
+    <meta name="discription" content="NorthCross MUN Coference News">
     <meta name="render" content="webkit">
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -112,8 +112,8 @@ while ($news[] = $query->fetch_assoc()){
             color: initial;
         }
         .container {
-            margin: 0 48px 0 30px;
-            padding: 48px 10px;
+            margin: 0 48px 0 48px;
+            padding: 48px 32px;
             background-color: rgba(255,255,255,.6);
         }
         .mainContent {
@@ -206,6 +206,15 @@ while ($news[] = $query->fetch_assoc()){
             .header .headerRight a {
                 font-size: medium;
             }
+            .container {
+                margin: 0 24px 0 24px;
+                padding: 48px 16px;
+            }
+            .container img {
+                width: 40%;
+                margin: 0 auto;
+                float: none !important;
+            }
         }
     </style>
 </head>
@@ -256,7 +265,7 @@ while ($news[] = $query->fetch_assoc()){
                             echo '
                         <li class="news">
                             <a href="/news/news.php?id='.$n['id'].'">
-                                <img src="/assets/pic/ncmunc.png" width="10%" style="float: left;">
+                                <img src="/assets/pic/ncmunc_rect.png" width="10%" style="float: left;">
                                 <div class="newsinfo">
                                     <div class="newstitle">'.$n['title'].'</div>
                                     <div class="newsfooter clearfix">

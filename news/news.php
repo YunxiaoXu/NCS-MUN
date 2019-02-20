@@ -27,9 +27,9 @@ if (!$news) {
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>NorthCross Model UN Conference</title>
-    <meta name="keywords" content="NorthCross, MUN, Model UN, NCMUNC, Model UN Conference">
-    <meta name="discription" content="NorthCross Model UN Conference">
+    <title>News - <?php echo $news['title'];?></title>
+    <meta name="keywords" content="<?php echo $news['keywords'];?>">
+    <meta name="discription" content="<?php echo $news['title'];?>">
     <meta name="render" content="webkit">
     <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -147,11 +147,15 @@ if (!$news) {
             font-size: 18px;
             line-height: 24px;
         }
-        .newsContent p {
+        .newsContent p, .newsContent li {
             text-indent: 2em;
         }
-        .newsContent ol {
+        .newsContent ol, .newsContent ul {
             padding-left: 0;
+        }
+        .newsContent li {
+            display: block;
+            margin: 1em 0;
         }
         .newsContent img {
             width: 90%;
