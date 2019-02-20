@@ -36,13 +36,73 @@ if ($_POST['action']=="new") {
     <meta charset="utf-8" />
     <title>News Editor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/assets/js/showdown.min.js"></script>
+    <script>
+        var $ = document.querySelector.bind(document);
+        var converter = new showdown.Converter();
+        function getBasename(path) {
+            index = path.lastIndexOf("/");
+            if (index<0) {
+                index = path.lastIndexOf("\\");
+            }
+            return path.substr(index+1);
+        }
+        function find(imgs, basename) {
+            for (i=0; i<imgs.length; i++) {
+                if (imgs[i].name == basename) return imgs[i];
+            }
+            return false;
+        }
+        function view() {
+            newsContent = $("textarea");
+            viewer = $("div#viewer")
+            text = newsContent.value;
+            html = converter.makeHtml(text);
+            viewer.innerHTML = html;
+            imgs = $("input[type='file']").files;
+            document.querySelectorAll("img").forEach((img)=>{
+                basename = getBasename(img.src);
+                if (find(imgs, basename)) {
+                    img.src=window.URL.createObjectURL(find(imgs, basename));
+                } else {
+                    img.src = "/assets/pic/ncmunc_rect.png";
+                }
+            })
+        }
+    </script>
     <style>
         .option { float:left; }
         .user { float: right; }
         table { border-collapse: collapse; }
         td { padding: 5px 10px; }
         input, textarea { border-width: 1px; }
-        input[type="text"], input[type="date"] { width: 60%; };
+        input[type="text"], input[type="date"] { width: 60%; }
+
+        #viewer {
+            width: 84%;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        #viewer p, #viewer li {
+            text-indent: 2em;
+        }
+        #viewer ol, #viewer ul {
+            padding-left: 0;
+        }
+        #viewer li {
+            display: block;
+            margin: 1em 0;
+        }
+        #viewer img {
+            width: 90%;
+            margin-left: -1em;
+        }
+        @media only screen and (max-width:700px) {
+            #viewer {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,11 +153,12 @@ echo "</span>";
                 </td>
             </tr>
             <tr>
-                <td colspan='2'><input type="submit"/></td>
+                <td colspan='2'><button type="button" onclick="view();">View</button> <input type="submit"/></td>
             </tr>
         </tbody>
         </table>
     </form>
+    <div id="viewer"></div>
 
 </body>
 </html>
