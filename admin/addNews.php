@@ -23,7 +23,7 @@ if ($_POST['action']=="new") {
         } else {
             $tmp_name = $_FILES["pics"]["tmp_name"][$key];
             $name = $_FILES["pics"]["name"][$key];
-            move_uploaded_file($tmp_name, "../../mun-static/pic/$name");
+            move_uploaded_file($tmp_name, "../assets/pic/upload/$name");
         }
     }
     exit();
@@ -150,10 +150,10 @@ echo "</span>";
             <tr>
                 <td colspan="2">
                     <textarea name="content" wrap="hard" rows="19" cols="100" placeholder="使用markdown语法
-图片地址为https://static.ncmunc.org/pic/<filename>
+图片地址为 /assets/pic/upload/<filename>
 例：
 图片为 201902201045.jpg
-地址为 https://static.ncmunc.org/pic/201902201045.jpg
+地址为 /assets/pic/upload/201902201045.jpg
 * 图片建议用时间命名，以防重复
                     "></textarea>
                 </td>
