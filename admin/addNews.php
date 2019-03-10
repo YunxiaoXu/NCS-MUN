@@ -28,6 +28,25 @@ if ($_POST['action']=="new") {
     }
     exit();
 }
+if ($_GET['action']=="update") {
+    echo "<h1>Update</h1>";
+    if (!isset($_GET['id'])) {
+        echo "<form method='GET'>";
+        echo "<input type='hidden' name='action' value='update'>";
+        echo "id:<input type='number' name='id'><input type='submit'>";
+        echo "</form>";
+        exit();
+    }
+    $select = "select * from news where id=$_GET[id]";
+    $query = $conn->query($select); 
+    if (!$query) {
+        exit('<script>history.go(-1)</script>');
+    }
+    $news = $query->fetch_assoc();
+    if (!$news) {
+        exit('<script>history.go(-1)</script>');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +84,11 @@ if ($_POST['action']=="new") {
                 if (find(imgs, basename)) {
                     img.src=window.URL.createObjectURL(find(imgs, basename));
                 } else {
-                    img.src = "/assets/pic/ncmunc_rect.png";
+                    i = new Image();
+                    i.onerror = ()=>{
+                        img.src = "/assets/pic/ncmunc_rect.png";
+                    }
+                    i.src = img.src;
                 }
             })
         }
@@ -109,10 +132,7 @@ if ($_POST['action']=="new") {
 
 <?php
 echo "<span class='option'>";
-// echo "<a href='download.php?db=volunteer";
-// echo isset($_GET["filter"])?"&filter=".$_GET["filter"]:"";
-// echo "'>Download</a>";
-echo "<span>NorthCross Model UN Conference</span>";
+echo "<a href='?action=update'>Update</a>";
 echo "</span>";
 
 echo "<span class='user'>";
@@ -129,19 +149,19 @@ echo "</span>";
         <tbody>
             <tr>
                 <td style="width:100px;">title: </td>
-                <td><input type="text" name="title"/></td>
+                <td><input type="text" name="title" <?php if($_GET['action']=="update")echo "value='$news[title]'"?>/></td>
             </tr>
             <tr>
                 <td>keywords: </td>
-                <td><input type="text" name="keywords" placeholder="用“, ”分隔"/></td>
+                <td><input type="text" name="keywords" placeholder="用“, ”分隔" <?php if($_GET['action']=="update")echo "value='$news[keywords]'"?>/></td>
             </tr>
             <tr>
                 <td>author: </td>
-                <td><input type="text" name="author"/></td>
+                <td><input type="text" name="author" <?php if($_GET['action']=="update")echo "value='$news[author]'"?>/></td>
             </tr>
             <tr>
                 <td>date: </td>
-                <td><input type="date" name="date"/></td>
+                <td><input type="date" name="date" <?php if($_GET['action']=="update")echo "value='$news[add_date]'"?>/></td>
             </tr>
             <tr>
                 <td>file: </td>
@@ -155,7 +175,7 @@ echo "</span>";
 图片为 201902201045.jpg
 地址为 /assets/pic/upload/201902201045.jpg
 * 图片建议用时间命名，以防重复
-                    "></textarea>
+                    "><?php if($_GET['action']=="update")echo $news["content"]?></textarea>
                 </td>
             </tr>
             <tr>
