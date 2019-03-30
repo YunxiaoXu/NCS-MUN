@@ -58,14 +58,15 @@ session_start();
             }
         }
         function showError() {
-            var errorText = document.querySelector("div.error");
+            var section = document.querySelector(".<?php echo $_GET['role']?>");
+            var errorText = section.querySelector("div.error");
             errorText.innerHTML="";
-            document.querySelectorAll("input").forEach(q=>{
+            section.querySelectorAll("input").forEach(q=>{
                 if (!q.checkValidity()) {
                     errorText.innerHTML += "* Error in " + inputs[q.name] + "!<br/>";
                 }
             });
-            document.querySelectorAll("textarea").forEach(q=>{
+            section.querySelectorAll("textarea").forEach(q=>{
                 if(q.textLength>1200) {
                     errorText.innerHTML += "* Error in " + inputs[q.name] + "! Too many words!<br/>";
                 }
@@ -269,7 +270,7 @@ if (!isset($_SESSION["userid"])) {
             </div>
             <div class="delegate hidden">
                 <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
-                    <input type="hidden" name="role" role="delegate"/>
+                    <input type="hidden" name="role" value="delegate"/>
                     <div class="welcome" style="text-align:center">
                         <h1>NCMUNC_2019 Delegate Sign Up</h1>
                         <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>

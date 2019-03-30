@@ -75,6 +75,9 @@ if ($role=="voluteer") {
     } else {
             echo "<p>Sign up Failed. Please check the information.</p>";
     }
+} elseif ($role == "delegate") {
+    var_dump($_POST);
+    echo "Thanks for applying to NCMUNC_2019 delegate.";
 }
 
 echo "<br/>";
