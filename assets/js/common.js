@@ -1,8 +1,13 @@
 var $ = document.querySelector.bind(document);
+var $$ = document.querySelectorAll.bind(document);
 
 function show(c) {
-    $("."+c+".hidden").classList.remove("hidden");
+    $$("."+c+".hidden").forEach(e=>{
+        e.classList.remove("hidden");
+    })
 }
 function hide(c) {
-    $("."+c).classList.add("hidden");
+    $$("."+c).forEach(e=>{
+        e.classList.add("hidden");
+    });
 }

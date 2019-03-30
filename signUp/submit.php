@@ -28,6 +28,8 @@ foreach($_POST as $k=>$v) {
         </table> -->
 
 <?php
+$role = $_POST["role"];
+
 $cname = $_POST["cname"];
 $ename = $_POST["ename"];
 $grade = $_POST["grade"];
@@ -41,37 +43,38 @@ $vol1 = htmlspecialchars($_POST["vol1"], ENT_QUOTES);
 //var_dump($vol1);
 
 require "../sql/sql.php";
+if ($role=="voluteer") {
+    $select = "SELECT id FROM volunteer WHERE cname='$cname' and email='$email'";
+    $repeatingCheck = $conn->query($select);
 
-$select = "SELECT id FROM volunteer WHERE cname='$cname' and email='$email'";
-$repeatingCheck = $conn->query($select);
-
-if ($repeatingCheck->fetch_assoc()) {
-    die("<script>alert('Same name and email already exist.');history.go(-1);</script>");
-}
-
-$insert = "INSERT INTO volunteer (cname, ename, grade, email,
- wechat, team, job, chief1, vol, submission_date) VALUES
- ('$cname', '$ename', $grade, '$email', '$wechat','$team', '$job', '".
- ($job=="chief"?"<a href=\'question.php?email=$email&q=chief1\'>chief1</a>":" - ")."', '".
- ($job=="vol"?"<a href=\'question.php?email=$email&q=vol\'>vol</a>":" - ")."', ".
- "now())";
-
-if ($conn->query($insert) === true) {
-    $id = $conn->query($select)->fetch_assoc()["id"];
-
-    $insert2 = "INSERT INTO question (id, chief1, vol)
-     VALUES ($id, '$chief1', '$vol1')";
-    //echo $insert2;
-    
-    if ($conn->query($insert2)===true) {
-        echo "<p>You have successfully signed up!</p>";
-        echo "<p>Please wait for the official notification email.</p>";
-        shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
-    } else {
-        echo "<p>Sign up Failed. Please check the questions.</p>";
+    if ($repeatingCheck->fetch_assoc()) {
+        die("<script>alert('Same name and email already exist.');history.go(-1);</script>");
     }
-} else {
-        echo "<p>Sign up Failed. Please check the information.</p>";
+
+    $insert = "INSERT INTO volunteer (cname, ename, grade, email,
+    wechat, team, job, chief1, vol, submission_date) VALUES
+    ('$cname', '$ename', $grade, '$email', '$wechat','$team', '$job', '".
+    ($job=="chief"?"<a href=\'question.php?email=$email&q=chief1\'>chief1</a>":" - ")."', '".
+    ($job=="vol"?"<a href=\'question.php?email=$email&q=vol\'>vol</a>":" - ")."', ".
+    "now())";
+
+    if ($conn->query($insert) === true) {
+        $id = $conn->query($select)->fetch_assoc()["id"];
+
+        $insert2 = "INSERT INTO question (id, chief1, vol)
+        VALUES ($id, '$chief1', '$vol1')";
+        //echo $insert2;
+        
+        if ($conn->query($insert2)===true) {
+            echo "<p>You have successfully signed up!</p>";
+            echo "<p>Please wait for the official notification email.</p>";
+            shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
+        } else {
+            echo "<p>Sign up Failed. Please check the questions.</p>";
+        }
+    } else {
+            echo "<p>Sign up Failed. Please check the information.</p>";
+    }
 }
 
 echo "<br/>";

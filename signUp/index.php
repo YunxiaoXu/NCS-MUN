@@ -111,7 +111,7 @@ session_start();
         }
     </style>
 </head>
-<body>
+<body onload="show('<?php echo $_GET['role'];?>');">
     <div class="wrapper">
         <div class="header">
             <p style="font-family:'times new roman';padding-left:16px;">NorthCross Model UN Conference</p>
@@ -129,143 +129,219 @@ if (!isset($_SESSION["userid"])) {
         </div>
         <div class="bg"></div>
         <div class="content">
-            <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
-                <div class="welcome" style="text-align:center">
-                    <h1>NCMUNC_2019 Sign Up</h1>
-                    <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>
-                    <p>Annually Model UN Conference</p>
-                    <br/>
-                    <button type="button" onclick="hide('welcome');show('team')">Next</button>
-                </div>
-                <div class="team hidden">
-                    <h2>Team:</h2>
-                    <ul class="team-selector">
-                        <li>
-                            <input type="radio" name="team" value="staff" id="staff" style="display:none;" checked="checked"/>
-                            <label for="staff" class="nowrap">Member of Staff</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="team" value="operation" id="operation" style="display:none;"/>
-                            <label for="operation" class="nowrap">Member of Operation</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="team" value="media" id="media" style="display:none;"/>
-                            <label for="media" class="nowrap">Member of Media & Tech</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="team" value="communication" id="communication" style="display:none;"/>
-                            <label for="communication" class="nowrap">Member of Communication</label>
-                        </li>
-                    </ul>
-                    <ul class="team-selector">
-                        <li>
-                            <input type="radio" name="team" value="general" id="general" style="display:none;"/>
-                            <label for="general" class="nowrap">General Conference Volunteer</label>
-                        </li>
-                    </ul>
-                    <br/>
-                    <button type="button" onclick="hide('team');show('welcome')">Back</button>
-                    <button type="button" onclick="setJobs();hide('team');show('job')">Next</button>
-                </div>
-                <div class="job hidden">
-                    <h2>Job:</h2>
-                    <ul class="job-selector">
-                        <li>
-                            <input type="radio" name="job" value="chief" id="chief" style="display:none;" checked="checked"/>
-                            <label for="chief" class="nowrap">chief</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="job" value="vol" id="vol" style="display:none;"/>
-                            <label for="vol" class="nowrap">vol</label>
-                        </li>
-                    </ul>
-                    <br/>
-                    <button type="button" onclick="hide('job');show('team')">Back</button>
-                    <button type="button" onclick="setQuestion();hide('job');show('questions')">Next</button>
-                </div>
-                <div class="questions hidden">
-                    <h2>Personal Introduction:</h2>
-                    <div class="chief-question">
-                        <p style="color:red">Up to 150 words for the question.</p>
-                        <span>Why are you qualified for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="chief1" wrap="hard" maxlength="1200"></textarea><br/>
-                        <!-- <span>What characteristic do you have for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="chief2" wrap="hard"></textarea>-->
+            <div class="volunteer hidden">
+                <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
+                    <input type="hidden" name="role" value="volunteer"/>
+                    <div class="welcome" style="text-align:center">
+                        <h1>NCMUNC_2019 Sign Up</h1>
+                        <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>
+                        <p>Annually Model UN Conference</p>
+                        <br/>
+                        <button type="button" onclick="hide('welcome');show('team')">Next</button>
                     </div>
-                    <div class="vol-question hidden">
-                        <p style="color:red">Up to 150 words for the question.</p>
-                        <span>Why are you applying for this position?</span><br/>
-                        <textarea rows="8" cols="64" name="vol1" wrap="hard" maxlength="1200"></textarea>
-                        <br/> 
+                    <div class="team hidden">
+                        <h2>Team:</h2>
+                        <ul class="team-selector">
+                            <li>
+                                <input type="radio" name="team" value="staff" id="staff" style="display:none;" checked="checked"/>
+                                <label for="staff" class="nowrap">Member of Staff</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="team" value="operation" id="operation" style="display:none;"/>
+                                <label for="operation" class="nowrap">Member of Operation</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="team" value="media" id="media" style="display:none;"/>
+                                <label for="media" class="nowrap">Member of Media & Tech</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="team" value="communication" id="communication" style="display:none;"/>
+                                <label for="communication" class="nowrap">Member of Communication</label>
+                            </li>
+                        </ul>
+                        <ul class="team-selector">
+                            <li>
+                                <input type="radio" name="team" value="general" id="general" style="display:none;"/>
+                                <label for="general" class="nowrap">General Conference Volunteer</label>
+                            </li>
+                        </ul>
+                        <br/>
+                        <button type="button" onclick="hide('team');show('welcome')">Back</button>
+                        <button type="button" onclick="setJobs();hide('team');show('job')">Next</button>
                     </div>
-                    <br/>
-                    <button type="button" onclick="hide('questions');show('job')">Back</button>
-                    <button type="button" onclick="hide('questions');show('info')">Next</button>
-                </div>
-                <div class="info hidden">
-                    <h2>Personal Information:</h2>
-                    <table style="padding-left: 20px;">
-                        <tbody>
-                            <tr>
-                                <td>Chinese name:</td>
-                                <td>
-                                    <span class="nowrap">
-                                        <input type="text" name="cname" pattern="^[\u4e00-\u9fa5]+$" required="required"/>
-                                        <span class="error">*</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>English name:</td>
-                                <td>
-                                    <span class="nowrap">
-                                        <input type="text" name="ename" pattern="^[a-zA-z \._-]+$" required="required">
-                                        <span class="error">*</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>School year:</td>
-                                <td>
-                                    <span class="nowrap">
-                                        <input type="text" name="grade" pattern="^[1-9][0-2]?$" required="required">
-                                        <span class="error">*</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>E-mail:</td>
-                                <td>
-                                    <span class="nowrap">
-                                        <input type="email" name="email" required="required">
-                                        <span class="error">*</span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>WeChat:</td>
-                                <td>
-                                    <span class="nowrap">
-                                        <input type="text" name="wechat" required="required">
-                                        <span class="error">*</span>
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br/>
-                    <button type="button" onclick="hide('info');show('questions')">Back</button>
-                    <button type="button" onclick="hide('info');show('submit');showError();">Next</button>
-                </div>
-                <div class="submit hidden">
-                    <h2>Review:</h2>
-                    <div class="error"></div>
-                    <br/>
-                    <button type="button" onclick="hide('submit');show('info')">Back</button>
-                    <hr/>
-                    <input type="submit" value="submit" style="padding:5px 16px;margin-top:5px;"/>
-                </div>
-            </form>
+                    <div class="job hidden">
+                        <h2>Job:</h2>
+                        <ul class="job-selector">
+                            <li>
+                                <input type="radio" name="job" value="chief" id="chief" style="display:none;" checked="checked"/>
+                                <label for="chief" class="nowrap">chief</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="job" value="vol" id="vol" style="display:none;"/>
+                                <label for="vol" class="nowrap">vol</label>
+                            </li>
+                        </ul>
+                        <br/>
+                        <button type="button" onclick="hide('job');show('team')">Back</button>
+                        <button type="button" onclick="setQuestion();hide('job');show('questions')">Next</button>
+                    </div>
+                    <div class="questions hidden">
+                        <h2>Personal Introduction:</h2>
+                        <div class="chief-question">
+                            <p style="color:red">Up to 150 words for the question.</p>
+                            <span>Why are you qualified for this position?</span><br/>
+                            <textarea rows="8" cols="64" name="chief1" wrap="hard" maxlength="1200"></textarea><br/>
+                        </div>
+                        <div class="vol-question hidden">
+                            <p style="color:red">Up to 150 words for the question.</p>
+                            <span>Why are you applying for this position?</span><br/>
+                            <textarea rows="8" cols="64" name="vol1" wrap="hard" maxlength="1200"></textarea>
+                            <br/> 
+                        </div>
+                        <br/>
+                        <button type="button" onclick="hide('questions');show('job')">Back</button>
+                        <button type="button" onclick="hide('questions');show('info')">Next</button>
+                    </div>
+                    <div class="info hidden">
+                        <h2>Personal Information:</h2>
+                        <table style="padding-left: 20px;">
+                            <tbody>
+                                <tr>
+                                    <td>Chinese name:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="cname" pattern="^[\u4e00-\u9fa5]+$" required="required"/>
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>English name:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="ename" pattern="^[a-zA-z \._-]+$" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>School year:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="grade" pattern="^[1-9][0-2]?$" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="email" name="email" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>WeChat:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="wechat" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <button type="button" onclick="hide('info');show('questions')">Back</button>
+                        <button type="button" onclick="hide('info');show('submit');showError();">Next</button>
+                    </div>
+                    <div class="submit hidden">
+                        <h2>Review:</h2>
+                        <div class="error"></div>
+                        <br/>
+                        <button type="button" onclick="hide('submit');show('info')">Back</button>
+                        <hr/>
+                        <input type="submit" value="submit" style="padding:5px 16px;margin-top:5px;"/>
+                    </div>
+                </form>
+            </div>
+            <div class="delegate hidden">
+                <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
+                    <input type="hidden" name="role" role="delegate"/>
+                    <div class="welcome" style="text-align:center">
+                        <h1>NCMUNC_2019 Delegate Sign Up</h1>
+                        <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>
+                        <p>Annually Model UN Conference</p>
+                        <br/>
+                        <button type="button" onclick="hide('welcome');show('info')">Next</button>
+                    </div>
+                    <div class="info hidden">
+                        <h2>Personal Information:</h2>
+                        <table style="padding-left: 20px;">
+                            <tbody>
+                                <tr>
+                                    <td>Chinese name:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="cname" pattern="^[\u4e00-\u9fa5]+$" required="required"/>
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>English name:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="ename" pattern="^[a-zA-z \._-]+$" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>School year:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="grade" pattern="^[1-9][0-2]?$" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="email" name="email" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>WeChat:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="wechat" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <button type="button" onclick="hide('info');show('questions')">Back</button>
+                        <button type="button" onclick="hide('info');show('submit');showError();">Next</button>
+                    </div>
+                    <div class="submit hidden">
+                        <h2>Review:</h2>
+                        <div class="error"></div>
+                        <br/>
+                        <button type="button" onclick="hide('submit');show('info')">Back</button>
+                        <hr/>
+                        <input type="submit" value="submit" style="padding:5px 16px;margin-top:5px;"/>
+                    </div>
+                </form>
+            </div>
             <br/>
         </div>
         <div class="footer">
