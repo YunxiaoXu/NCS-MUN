@@ -358,7 +358,9 @@ while ($news[] = $query->fetch_assoc()){
                 </div>
                 <div class="application whitebg">
                     <h1 id="application">Application</h2>
-                    <p> Volunteer Application: <a href="/signUp/">Sign Up</a></p>
+                    <p> Volunteer Application: <a href="javascript:void(0);"><s>Sign Up</s></a></p>
+                    <!-- <p> Volunteer Application: <a href="/signUp/?role=volunteer">Sign Up</a></p> -->
+                    <p> Delegate Application: <a href="/signUp/?role=delegate">Sign Up</a></p>
                     <br/><br/><br/><br/><br/><br/>
                 </div>
             </div>
