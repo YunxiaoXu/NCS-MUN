@@ -354,9 +354,9 @@ if (!isset($_SESSION["userid"])) {
                                     <td>
                                         <span class="nowrap">
                                             <select name="committee" required="required">
-                                                <option>First</option>
-                                                <option>Second</option>
-                                                <option>Third</option>
+                                                <option>CSW</option>
+                                                <option>DISEC</option>
+                                                <!-- <option>Third</option> -->
                                             </select>
                                             <span class="error">*</span>
                                         </span>
