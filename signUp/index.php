@@ -18,7 +18,7 @@ session_start();
     <script>
         var inputs = {cname:"Chinese Name", ename:"English Name", grade:"School Year", email:"E-mail",
             wechat:"WeChat",team:"Team", job:"Job", chief1:"First Question for Chief",
-            chief2:"Second Question for Chief", vol1:"Question for Vol"};
+            chief2:"Second Question for Chief", vol1:"Question for Vol", school:"School", idnumber:"ID Number"};
         function setDefaultJobs() {
             $('#chief').disabled=false;
             $('#chief+label').onclick = "show('chief-question');hide('vol-question');";
@@ -104,6 +104,10 @@ session_start();
         textarea {
             resize:none;
             box-sizing: border-box;
+            width: 100%;
+            border: solid 1px gray;
+        }
+        select {
             width: 100%;
             border: solid 1px gray;
         }
@@ -301,6 +305,24 @@ if (!isset($_SESSION["userid"])) {
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>ID Number:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="idnumber" pattern="^[1-9]\d{17}$" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>School:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <input type="text" name="school" required="required">
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>School year:</td>
                                     <td>
                                         <span class="nowrap">
@@ -327,10 +349,23 @@ if (!isset($_SESSION["userid"])) {
                                         </span>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Committee Preferrence:</td>
+                                    <td>
+                                        <span class="nowrap">
+                                            <select name="committee" required="required">
+                                                <option>First</option>
+                                                <option>Second</option>
+                                                <option>Third</option>
+                                            </select>
+                                            <span class="error">*</span>
+                                        </span>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <br/>
-                        <button type="button" onclick="hide('info');show('questions')">Back</button>
+                        <button type="button" onclick="hide('info');show('welcome')">Back</button>
                         <button type="button" onclick="hide('info');show('submit');showError();">Next</button>
                     </div>
                     <div class="submit hidden">

@@ -32,9 +32,12 @@ $role = $_POST["role"];
 
 $cname = $_POST["cname"];
 $ename = $_POST["ename"];
+$idnumber = $_POST["idnumber"];
+$school = htmlspecialchars($_POST["school"]);
 $grade = $_POST["grade"];
 $email = htmlspecialchars($_POST["email"]);
 $wechat = htmlspecialchars($_POST["wechat"]);
+$committee = htmlspecialchars($_POST["committee"]);
 $team = $_POST["team"];
 $job = $_POST["job"];
 $chief1 = htmlspecialchars($_POST["chief1"], ENT_QUOTES);
@@ -76,7 +79,27 @@ if ($role=="voluteer") {
             echo "<p>Sign up Failed. Please check the information.</p>";
     }
 } elseif ($role == "delegate") {
-    var_dump($_POST);
+
+    $select = "SELECT id FROM delegate WHERE cname='$cname' and email='$email'";
+    $repeatingCheck = $conn->query($select);
+
+    if ($repeatingCheck->fetch_assoc()) {
+        die("<script>alert('Same name and email already exist.');history.go(-1);</script>");
+    }
+
+    $insert = "INSERT INTO delegate (cname, ename, idnumber, school, grade, email,
+    wechat, committee, submission_date) VALUES
+    ('$cname', '$ename', '$idnumber', '$school', $grade, '$email', '$wechat','$committee', now())";
+
+    if ($conn->query($insert) === true) {
+        echo "<p>You have successfully signed up!</p>";
+        echo "<p>Please wait for the official notification email.</p>";
+        // shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
+    } else {
+            echo "<p>Sign up Failed. Please check the information.</p>";
+    }
+
+    echo "<br/>";
     echo "Thanks for applying to NCMUNC_2019 delegate.";
 }
 
