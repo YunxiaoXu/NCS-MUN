@@ -20,8 +20,10 @@ if (!isset($_SESSION["userid"]) || $_SESSION['userrole']!=="admin") {
 <body>
 
 <?php
+$db = isset($_GET["db"])?$_GET["db"]:"delegate";
+
 echo "<span class='option'>";
-echo "<a href='download.php?db=volunteer";
+echo "<a href='download.php?db=$db";
 echo isset($_GET["filter"])?"&filter=".$_GET["filter"]:"";
 echo "'>Download</a>";
 echo "</span>";
@@ -33,8 +35,13 @@ echo "</span>";
 ?>
 
     <br/>
-    <h1>all volunteer requests</h1>
+    <h1>all <?php echo $db;?> requests</h1>
+    <div>
+        <a href="check.php?db=delegate">delegate</a>
+        <a href="check.php?db=volunteer">volunteer</a>
+    </div>
     <form method="GET" action="check.php">
+        <input type='hidden' name="db" value="<?php echo $db;?>">
         <input type="text" id="filter" name="filter"/>
         <button type="submit">search</button>
     </form>
@@ -42,27 +49,27 @@ echo "</span>";
 
 <?php
 require "../sql/sql.php";
-$queryString = "SELECT * FROM volunteer";
+$queryString = "SELECT * FROM $db";
 if ($filter = $_GET["filter"]) {
     $queryString = "$queryString where $filter";
 }
 //echo $queryString;
 $query = $conn->query($queryString);
-$volunteer = $query->fetch_assoc();
+$data = $query->fetch_assoc();
 
 echo "<tr>";
-foreach($volunteer as $k=>$v) {
+foreach($data as $k=>$v) {
     echo "<th>$k</th>";
 }
 echo "</tr>";
 
 do {
     echo "<tr>";
-    foreach($volunteer as $v) {
+    foreach($data as $v) {
         echo "<td>$v</td>";
     }
     echo "</tr>";
-} while($volunteer = $query->fetch_assoc());
+} while($data = $query->fetch_assoc());
 
 ?>
 

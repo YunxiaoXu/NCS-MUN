@@ -15,6 +15,22 @@ mun.volunteer
 | submission_date | date             | NULL            | NO   |     |                |
 +-----------------+------------------+-----------------+------+-----+----------------+
 
+mun.delegate
++-----------------+------------------+------+-----+---------+----------------+
+| Field           | Type             | Null | Key | Default | Extra          |
++-----------------+------------------+------+-----+---------+----------------+
+| id              | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| cname           | varchar(40)      | NO   |     | NULL    |                |
+| ename           | varchar(40)      | NO   |     | NULL    |                |
+| idnumber        | char(18)         | NO   |     | NULL    |                |
+| school          | varchar(40)      | NO   |     | NULL    |                |
+| grade           | int(10) unsigned | NO   |     | NULL    |                |
+| email           | varchar(100)     | NO   |     | NULL    |                |
+| wechat          | varchar(100)     | NO   |     | NULL    |                |
+| committee       | varchar(40)      | NO   |     | NULL    |                |
+| submission_date | date             | NO   |     | NULL    |                |
++-----------------+------------------+------+-----+---------+----------------+
+
 mun.user
 +-----------------------+------------------+-----------------+------+-----+----------------+
 | Field                 | Type             | Collation       | Null | Key | Extra          |
