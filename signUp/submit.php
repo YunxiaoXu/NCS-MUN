@@ -71,7 +71,7 @@ if ($role=="voluteer") {
         if ($conn->query($insert2)===true) {
             echo "<p>You have successfully signed up!</p>";
             echo "<p>Please wait for the official notification email.</p>";
-            shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
+            // shell_exec("python3 ../mail/send.py -n $ename -e $email -s 'Welcome to NCMUNC!' -f ../mail/welcome.html");
         } else {
             echo "<p>Sign up Failed. Please check the questions.</p>";
         }
@@ -94,7 +94,8 @@ if ($role=="voluteer") {
     if ($conn->query($insert) === true) {
         echo "<p>You have successfully signed up!</p>";
         echo "<p>Please wait for the official notification email.</p>";
-        // shell_exec("python3 ../mail/send.py -n $ename -e $email -f ../mail/welcome.html");
+        // shell_exec("python3 ../mail/send.py -n $ename -e $email -s 'Welcome to NCMUNC!' -f ../mail/welcome.html");
+        shell_exec("python3 ../mail/send.py -n 'NCMUNC admin' -e summer33s@163.com -s 'New Delegate Request for NCMUNC' -f ../mail/notification.html");
     } else {
             echo "<p>Sign up Failed. Please check the information.</p>";
     }
