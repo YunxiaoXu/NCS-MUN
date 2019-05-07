@@ -10,9 +10,9 @@ sender = '=?utf-8?q?NCMUNC_Welcome?= <welcome@ncmunc.org>'
 receivers = []
 
 def send_email(message):
-    smtpObj = smtplib.SMTP()
+    smtpObj = smtplib.SMTP_SSL()
     print("Connecting to server...")
-    print(smtpObj.connect("smtp.ym.163.com", 25))
+    print(smtpObj.connect("smtp.ym.163.com", 994))
 
     print("Logining...")
     print(smtpObj.login("welcome@ncmunc.org", "NBmun2019"))
@@ -20,6 +20,8 @@ def send_email(message):
     print("Sending...")
     smtpObj.sendmail(sender, receivers, message.as_string())
     print ("Success")
+
+    smtpObj.quit()
 
 def format_email_addr(name, email):
     return formataddr((Header(name, "utf-8").encode(), email))
