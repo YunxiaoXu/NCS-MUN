@@ -116,7 +116,7 @@ session_start();
         }
     </style>
 </head>
-<body onload="show('<?php echo $_GET['role'];?>');">
+<body onload="show('<?php echo $_GET['role'] ?? 'default';?>');">
     <div class="wrapper">
         <div class="header">
             <p style="font-family:'times new roman';padding-left:16px;">NorthCross Model UN Conference</p>
@@ -134,11 +134,19 @@ if (!isset($_SESSION["userid"])) {
         </div>
         <div class="bg"></div>
         <div class="content">
+            <div class="default hidden">
+                <h1 style="text-align:center">NCMUNC_2019 Sign Up</h1>
+                <h2>Choose the type you are going to apply:</h2>
+                <ul style="list-style:disc">
+                    <li style="display:list-item"><a href="?role=volunteer">volunteer</a></li>
+                    <li style="display:list-item"><a href="?role=delegate">delegate</a></li>
+                </ul>
+            </div>
             <div class="volunteer hidden">
                 <form action="submit.php" method="POST" onkeydown="if(event.keyCode==13)return false;">
                     <input type="hidden" name="role" value="volunteer"/>
                     <div class="welcome" style="text-align:center">
-                        <h1>NCMUNC_2019 Sign Up</h1>
+                        <h1>NCMUNC_2019 Volunteer Sign Up</h1>
                         <p>Welcome to the registration system for NorthCross MUN Conference_2019!</p>
                         <p>Annually Model UN Conference</p>
                         <br/>
