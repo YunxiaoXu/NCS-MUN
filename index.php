@@ -310,7 +310,7 @@ while ($news[] = $query->fetch_assoc()){
             <div class="mainContent">
                 <div class="about whitebg">
                     <h1 id="about">About</h2>
-                    <p style="line-height:32px;"> NCMUN Conference 是由North Cross Shanghai MUN Team 筹办的为期三天（7.1-7.3）的模拟联合国会议。其目的在于用真实的会议项目扩大MUN影响力，训练新手，提高学生对于国际事务的关注度，同时增进我校与全国各地高校的友好交流。以共同成长为目标，在活动中锻炼自我。</p>
+                    <p style="line-height:32px;"> NCMUN Conference 是由North Cross Shanghai MUN Team 筹办的为期三天（9.6-9.8）的模拟联合国会议。其目的在于用真实的会议项目扩大MUN影响力，训练新手，提高学生对于国际事务的关注度，同时增进我校与全国各地高校的友好交流。以共同成长为目标，在活动中锻炼自我。</p>
                     <br/><br/>
                 </div>
                 <div class="news whitebg">
